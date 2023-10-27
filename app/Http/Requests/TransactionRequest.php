@@ -27,7 +27,7 @@ class TransactionRequest extends FormRequest
             'book_id' => 'required|exists:books,id',
             'user_id' => 'required|exists:users,id',
             'borrow_date' => 'nullable|date',
-            'return_date' => 'nullable|date',
+            'return_date' => 'nullable|date|after:borrow_date',
             'status' => 'required|in:Menunggu,Berjalan,Terlambat',
         ];
     }

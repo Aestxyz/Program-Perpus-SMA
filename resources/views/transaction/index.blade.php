@@ -13,7 +13,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 position-relative text-center d-lg-none">
-                            <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/illustrations/illustration-john-2.png"
+                            <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/front-pages/landing-page/sitting-girl-with-laptop.png"
                                 class="card-img-position bottom-0 w-50" alt="View Profile">
                         </div>
                     </div>

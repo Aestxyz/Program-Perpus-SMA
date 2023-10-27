@@ -54,7 +54,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-primary">
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-body shadow">
                 <div class="app-brand demo">
                     <a href="/home" class="app-brand-link">
                         <span class="app-brand-logo demo me-1">
@@ -90,10 +90,10 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="app-brand-text demo menu-text fw-semibold ms-2">Perpustakaan</span>
+                        <span class="app-brand-text text-body demo menu-text fw-semibold ms-2">SI-Perpus</span>
                     </a>
 
-                    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+                    <a href="#;" class="layout-menu-toggle menu-link text-large ms-auto">
                         <i class="mdi menu-toggle-icon d-xl-block align-middle mdi-20px"></i>
                     </a>
                 </div>
@@ -111,22 +111,22 @@
                 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
                     id="layout-navbar">
                     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                        <a class="nav-item nav-link px-0 me-xl-4" href="#">
                             <i class="mdi mdi-menu mdi-24px"></i>
                         </a>
                     </div>
 
-                    <div class="navbar-nav-right d-flex align-items-center bg-white rounded-3 shadow px-1 py-2"
+                    <div class="navbar-nav-right d-flex align-items-center rounded-3 shadow px-1 py-2"
                         id="navbar-collapse">
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);"
+                                <a class="nav-link dropdown-toggle hide-arrow p-0" href="#;"
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="/assets/img/avatars/1.png" alt
-                                            class="w-px-40 h-auto rounded-circle" />
+                                        <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/avatars/2.png"
+                                            alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end mt-3 py-2">
@@ -135,8 +135,8 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0 me-2 pe-1">
                                                     <div class="avatar avatar-online">
-                                                        <img src="/assets/img/avatars/1.png" alt
-                                                            class="w-px-40 h-auto rounded-circle" />
+                                                        <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/avatars/2.png"
+                                                            alt class="w-px-40 h-auto rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">

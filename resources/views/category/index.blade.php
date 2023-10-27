@@ -10,9 +10,9 @@
                         {{ $categories->count() }} kategori buku saat ini.</p>
                 </div>
             </div>
-            <div class="col-12 col-md-6 position-relative text-center">
-                <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/illustrations/illustration-john-2.png"
-                    class="card-img-position bottom-0 w-50 end-0 scaleX-n1-rtl" alt="View Profile">
+            <div class="col-12 col-md-6 position-relative text-center align-self-end">
+                <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/front-pages/landing-page/sitting-girl-with-laptop.png"
+                    class="card-img-position bottom-0 w-25 end-0 scaleX-n1-rtl " alt="View Profile">
             </div>
         </div>
     </div>

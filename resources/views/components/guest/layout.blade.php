@@ -48,7 +48,7 @@
 
 </head>
 
-<body class="bg-white">
+<body>
     <x-guest.navbar></x-guest.navbar>
     <div class="container">
         @if (session('success'))
