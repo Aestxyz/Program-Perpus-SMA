@@ -57,7 +57,7 @@ class CatalogController extends Controller
 
             $transaction = Transaction::create($validate);
 
-            return redirect()->route('catalog.process', $transaction->id);
+            return redirect()->route('catalog.history', auth()->user()->slug) ;
         }
     }
 
