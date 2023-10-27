@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-light py-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img class="img-fluid" src="/assets/img/favicon/favicon.ico" alt="" width="48px" height="48px">
+                <i class="mdi mdi-bullseye mdi-36px"></i>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav_lc"
                 aria-controls="nav_lc" aria-expanded="false" aria-label="Toggle navigation">

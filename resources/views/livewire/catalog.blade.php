@@ -28,7 +28,7 @@
         <div class="row gy-4 mb-4">
             @foreach ($books as $book)
                 <div class="col-sm-6 col-lg-4">
-                    <div class="card shadow-none border p-2 h-100">
+                    <div class="card shadow-none bg-body border p-2 h-100">
                         <div class="rounded-2 text-center mb-3">
                             <a href="{{ route('catalog.show', $book->id) }}">
                                 <img class="img" style="object-fit: cover" src="{{ Storage::url($book->image) }}"
