@@ -50,10 +50,13 @@ class TransactionController extends Controller
         $validate = $request->validated();
 
         $transaction = Transaction::where('user_id', $request->user_id)
-            ->where('status', 'Berjalan')
-            ->where('status', 'Terlambat')
-            ->orWhere('status', 'Berjalan')
-            ->orWhere('status', 'Terlambat')
+            ->where(function ($query) {
+                $query->where('status', 'Berjalan')
+                    ->orWhere('status', 'Terlambat');
+            })->orWhere(function ($query) {
+                $query->where('status', 'Berjalan')
+                    ->Where('status', 'Terlambat');
+            })
             ->count();
 
         if ($transaction >= 3) {

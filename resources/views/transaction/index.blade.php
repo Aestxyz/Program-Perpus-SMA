@@ -22,11 +22,6 @@
                     <div class="row g-3">
                         <div class="col-md-3 col-6">
                             <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                    <div class="avatar-initial bg-primary rounded shadow">
-                                        <i class="mdi mdi-trending-up mdi-24px"></i>
-                                    </div>
-                                </div>
                                 <div class="ms-3">
                                     <div class="small mb-1">Menunggu</div>
                                     <h5 class="mb-0">{{ $waiting->count() }}</h5>
@@ -35,11 +30,6 @@
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                    <div class="avatar-initial bg-success rounded shadow">
-                                        <i class="mdi mdi-account-outline mdi-24px"></i>
-                                    </div>
-                                </div>
                                 <div class="ms-3">
                                     <div class="small mb-1">Berjalan</div>
                                     <h5 class="mb-0">{{ $walking->count() }}</h5>
@@ -48,11 +38,6 @@
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                    <div class="avatar-initial bg-warning rounded shadow">
-                                        <i class="mdi mdi-cellphone-link mdi-24px"></i>
-                                    </div>
-                                </div>
                                 <div class="ms-3">
                                     <div class="small mb-1">Terlambat</div>
                                     <h5 class="mb-0">{{ $penalty->count() }}</h5>
@@ -61,11 +46,6 @@
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                    <div class="avatar-initial bg-info rounded shadow">
-                                        <i class="mdi mdi-currency-usd mdi-24px"></i>
-                                    </div>
-                                </div>
                                 <div class="ms-3">
                                     <div class="small mb-1">Selesai</div>
                                     <h5 class="mb-0">{{ $finished->count() }}</h5>

@@ -7,9 +7,6 @@
                 <div class="card-header">
                     <div class="card-title text-center">
                         <h5 class="fw-bold">Pembayaran Denda Peminjaman dan Pengembalian Buku Perpustakaan</h5>
-                        <p class="fw-bold">Kode Peminjaman :</p>
-                        <button class="btn btn-body text-black" disabled
-                            style="outline-style: dashed;">{{ $transaction->code }}</button>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -76,7 +73,7 @@
 
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="card-title m-0">Detail Buku</h5>
+                    <h6 class="card-title m-0">Detail Buku</h6>
                     <h6 class="m-0"><a href="{{ route('books.show', $transaction->book->id) }}">Lihat</a></h6>
                 </div>
                 <div class="card-body">

@@ -20,8 +20,8 @@
                         </div>
                     </div>
 
-                    <div class="lc-block mb-6"><a class="btn btn-primary px-4 me-md-2 btn-lg" href="#"
-                            role="button">Get it now</a>
+                    <div class="lc-block mb-6"><a class="btn btn-primary px-4 me-md-2 btn-lg"
+                            href="{{ route('catalog.index') }}" role="button">Get it now</a>
                     </div>
                 </div>
 

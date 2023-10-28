@@ -17,9 +17,6 @@
                 <div class="text-wrap">
                     <h4 class="fw-bold">Informasi Peminjaman dan Pengembalian Buku
                         Perpustakaan</h4>
-                    <p>Kode Peminjaman:</p>
-                    <button type="button" disabled class="btn btn-body mb-4" style="outline-style: dashed;">
-                        <span class="text-dark">{{ $penalty->transaction->code }}</span>
                 </div>
                 </button>
                 <div class="row gy-2">

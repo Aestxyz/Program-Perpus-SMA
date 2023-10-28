@@ -37,10 +37,13 @@ class CatalogController extends Controller
         $validate = $request->validated();
 
         $transaction = Transaction::where('user_id', $request->user_id)
-            ->where('status', 'Berjalan')
-            ->where('status', 'Terlambat')
-            ->orWhere('status', 'Berjalan')
-            ->orWhere('status', 'Terlambat')
+            ->where(function ($query) {
+                $query->where('status', 'Berjalan')
+                    ->orWhere('status', 'Terlambat');
+            })->orWhere(function ($query) {
+                $query->where('status', 'Berjalan')
+                    ->Where('status', 'Terlambat');
+            })
             ->count();
 
         if ($transaction >= 3) {
@@ -57,7 +60,7 @@ class CatalogController extends Controller
 
             $transaction = Transaction::create($validate);
 
-            return redirect()->route('catalog.history', auth()->user()->slug) ;
+            return redirect()->route('catalog.history', auth()->user()->slug);
         }
     }
 

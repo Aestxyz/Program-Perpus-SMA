@@ -1,6 +1,6 @@
 <x-guest.layout>
     <x-slot name="title">Book {{ $book->title }}</x-slot>
-    <div class="card bg-body m-5 mt-1 p-3 shadow-none">
+    <div class="card m-5 mt-1 p-3 shadow-none" style="background: transparent">
         <h5 class="mb-0">Detail Buku</h5>
         <p class="mb-3"> informasi yang diberikan di bawahnya akan berkaitan dengan detail atau rincian mengenai suatu
             buku</p>
