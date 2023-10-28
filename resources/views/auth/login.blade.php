@@ -6,7 +6,7 @@
                 @if (session('error'))
                     <div class="alert alert-danger alert-dismissible mb-3" role="alert">
                         <h4 class="alert-heading d-flex align-items-center"><i
-                                class="mdi mdi-check-circle-outline mdi-24px me-2"></i>Oopps :(</h4>
+                                class="mdi mdi-check-circle-outline mdi-24px me-2"></i>Errors :(</h4>
                         <hr>
                         <p class="mb-0">{{ session('error') }}</p>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
@@ -19,6 +19,9 @@
                     <!-- Logo -->
                     <div class="app-brand justify-content-center mt-5">
                         <a href="#" class="app-brand-link gap-2">
+                            <img class="img-fluid"
+                                src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt=""
+                                width="28px" height="28px">
                             <span class="app-brand-text demo text-heading fw-semibold">SI-perpus</span>
                         </a>
                     </div>

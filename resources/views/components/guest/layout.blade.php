@@ -104,29 +104,42 @@
         </svg>
     </div>
 
-    <footer class="content-footer footer bg-footer-theme">
-        <div class="container-fluid">
-            <div
-                class="footer-container d-flex align-items-center justify-content-between py-3 flex-md-row flex-column">
-                <div class="text-body mb-2 mb-md-0">
-                    ©
-                    <script>
-                        document.write(new Date().getFullYear());
-                    </script>
-                    , made with <span class="text-danger"><i class="tf-icons mdi mdi-heart"></i></span> by
-                    <a href="https://themeselection.com" target="_blank"
-                        class="footer-link fw-medium">ThemeSelection</a>
-                </div>
-                <div class="d-none d-lg-inline-block">
-                    <a href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/documentation/"
-                        target="_blank" class="footer-link me-3">Documentation</a>
+    <!-- Footer -->
+    <footer class="container p-4 text-center ">
+        <!-- Grid container -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!"
+                role="button"><i class="fab fa-facebook-f"></i></a>
 
-                    <a href="https://github.com/themeselection/materio-bootstrap-html-admin-template-free/issues"
-                        target="_blank" class="footer-link me-3">Support</a>
-                </div>
+            <!-- Twitter -->
+            <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!"
+                role="button"><i class="fab fa-twitter"></i></a>
+
+            <!-- Google -->
+            <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!"
+                role="button"><i class="fab fa-google"></i></a>
+
+            <!-- Instagram -->
+            <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!"
+                role="button"><i class="fab fa-instagram"></i></a>
+
+            <!-- Linkedin -->
+            <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!"
+                role="button"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Github -->
+            <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!"
+                role="button"><i class="fab fa-github"></i></a>
+        </section>
+        <div class="">
+            <!-- Copyright -->
+            <div class="text-center p-3">
+                © 2023 Copyright:
+                <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
             </div>
-        </div>
+            <!-- Copyright -->
     </footer>
+    <!-- Footer -->
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->

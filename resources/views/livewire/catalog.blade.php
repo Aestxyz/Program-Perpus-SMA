@@ -25,31 +25,24 @@
             <i wire:loading class="mdi mdi-loading mdi-spin mdi-36px text-primary"></i>
             {{ $search }}
         </h5>
-        <div class="row gy-4 mb-4">
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4">
             @foreach ($books as $book)
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card shadow-none bg-body border p-2 h-100">
-                        <div class="rounded-2 text-center mb-3">
-                            <a href="{{ route('catalog.show', $book->id) }}">
-                                <img class="img" style="object-fit: cover" src="{{ Storage::url($book->image) }}"
-                                    width="100%" height="200px" alt="Book Cover">
-                            </a>
-                        </div>
-                        <div class="card-body p-3 pt-2">
-                            <div class="align-items-center mb-3 ">
-                                <span
-                                    class="badge rounded-pill bg-label-primary text-wrap">{{ $book->category->name }}</span>
+                <div class="col">
+                    <a href="{{ route('catalog.show', $book->id) }}">
+                        <div class="lc-block card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                            lc-helper="background"
+                            style="background-image: url('{{ Storage::url($book->image) }}'); background-size:cover">
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                                <div class="lc-block pt-5 mt-5 mb-4">
+                                    <div editable="rich">
+                                        <h2 class="display-3 lh-1 fw-bold text-black">{{ $book->title }}</h2>
+                                        <p class="text-truncate text-black">{{ $book->synopsis }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <a href="{{ route('catalog.show', $book->id) }}" class="h5">{{ $book->title }}</a>
-                            <p class="mt-2 text-truncate">{{ $book->synopsis }}
-                            </p>
                         </div>
-                        <div class="card-footer">
-                            <a href="{{ route('catalog.show', $book->id) }}"
-                                class="btn btn-primary w-100 {{ $book->book_count == 0 ? 'disabled' : '' }}"><i
-                                    class="mdi mdi-arrow-right lh-1 scaleX-n1-rtl"></i>Lihat</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>

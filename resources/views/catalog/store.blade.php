@@ -10,10 +10,9 @@
             <form action="{{ route('catalog.store') }}" method="post">
                 @csrf
                 <div class="modal-body">
-                    <h3 class="text-center fw-bold mb-2">Apakah anda yakin ingin meminjam buku?</h3>
-                    <p class="text-center">Peminjaman buku di perpustakaan akan diproses oleh petugas setelah pengunjung
-                        melakukan kunjungan langsung ke perpustakaan dan mengambil buku yang ingin dipinjam. Proses
-                        peminjaman buku akan dilakukan setelah pengunjung memenuhi syarat dan ketentuan yang berlaku di
+                    <h3 class="text-center fw-bold mb-2">Apakah Anda ingin melanjutkan dan memesan buku di perpustakaan?</h3>
+                    <p class="text-center">Proses
+                        peminjaman buku akan dilakukan setelah peminjam memenuhi syarat dan ketentuan yang berlaku di
                         perpustakaan.</p>
 
                     @auth
