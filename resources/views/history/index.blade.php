@@ -11,11 +11,12 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#navs-left-align-waiting">Menunggu</button>
-                        @if ($waiting->count() > 0)
-                            <span
-                                class="badge rounded-pill badge-center h-px-20 w-px-20 bg-label-danger ms-1">{{ $waiting->count() }}</span>
-                        @endif
+                            data-bs-target="#navs-left-align-waiting">Menunggu
+                            @if ($waiting->count() > 0)
+                                <span
+                                    class="badge rounded-pill badge-center h-px-20 w-px-20 bg-label-danger ms-1">{{ $waiting->count() }}</span>
+                            @endif
+                        </button>
                     </li>
                     <li class="nav-item">
                         <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
