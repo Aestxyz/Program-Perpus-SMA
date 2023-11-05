@@ -64,4 +64,24 @@ class PenaltyController extends Controller
             'amount' => $amount,
         ]);
     }
+
+    public function createAndUpdate(PenaltyRequest $request)
+    {
+        $transaction = Transaction::findOrFail($request->transaction_id);
+
+        $validatedData = $request->validated();
+        $validatedData['borrow_date'] = $transaction->borrow_date;
+        $validatedData['return_date'] = $transaction->return_date;
+
+        Penalty::create($validatedData);
+
+        $transaction->update([
+            'status' => 'Berjalan',
+            'return_date' => Carbon::parse($transaction->return_date)
+                ->addDays(7)
+                ->format('Y-m-d'),
+        ]);
+
+        return redirect()->route('penalties.index')->with('success', 'Proses perpanjangan waktu peminjaman dan pengembalian buku telah dilakukan.');
+    }
 }

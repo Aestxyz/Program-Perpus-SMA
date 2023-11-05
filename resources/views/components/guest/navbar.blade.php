@@ -19,6 +19,12 @@
                     @auth
                         @if (auth()->user()->role == 'Anggota')
                             <a class="btn btn-outline-primary me-2" href="{{ route('catalog.history') }}">Riwayat</a>
+                            <a class="btn btn-danger me-2" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         @else
                             <a class="btn btn-outline-primary me-2" href="/home">Dashboard</a>
                         @endif

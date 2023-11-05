@@ -90,12 +90,14 @@ Route::middleware(['auth', 'role:Petugas,Kepala'])->group(function () {
         Route::put('/{id}/confirmation', [TransactionController::class, 'confirmation'])->name('transactions.confirmation');
         Route::put('/{id}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
         Route::put('/{id}/finished', [TransactionController::class, 'finished'])->name('transactions.finished');
+        Route::put('/{id}/extratime', [TransactionController::class, 'extratime'])->name('transactions.extratime');
     });
 
     Route::prefix('penalties')->group(function () {
         Route::get('/', [PenaltyController::class, 'index'])->name('penalties.index');
         Route::get('/{id}/penalty', [PenaltyController::class, 'show'])->name('penalties.show');
         Route::post('/', [PenaltyController::class, 'store'])->name('penalties.store');
+        Route::post('/createAndUpdate', [PenaltyController::class, 'createAndUpdate'])->name('penalties.createAndUpdate');
     });
 
     Route::get('/reports', [ReportController::class, 'index'])->name('reports');

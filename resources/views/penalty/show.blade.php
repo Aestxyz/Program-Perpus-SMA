@@ -16,7 +16,6 @@
                                 <tr>
                                     <th>Tanggal Peminjaman</th>
                                     <th>Tanggal Kembali</th>
-                                    <th>Status</th>
                                     <th>Tanggal Lewat</th>
                                 </tr>
                             </thead>
@@ -24,7 +23,6 @@
                                 <tr>
                                     <td>{{ $transaction->borrow_date }}</td>
                                     <td>{{ $transaction->return_date }}</td>
-                                    <td><span class="badge bg-danger">{{ $transaction->status }}</span></td>
                                     <td>{{ $lates_day }} Hari Berlalu</td>
                                 </tr>
                             </tbody>
@@ -42,6 +40,10 @@
                             </div>
                             <div class="my-5 text-center">
                                 @include('penalty.store')
+                                <div class="divider divider-primary">
+                                    <div class="divider-text">Atau</div>
+                                </div>
+                                @include('penalty.createAndUpdate')
                             </div>
                         </div>
                     </div>
@@ -80,7 +82,7 @@
                     <div class="d-flex justify-content-start align-items-center mb-4">
                         <div class="avatar me-2 pe-1">
                             <img src="{{ Storage::url($transaction->book->image) }}" alt="Avatar"
-                                class="rounded-circle">
+                                class="rounded-circle w-auto">
                         </div>
                         <div class="d-flex flex-column">
                             <a href="app-user-view-account.html">

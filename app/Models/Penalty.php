@@ -14,7 +14,9 @@ class Penalty extends Model
         'transaction_id',
         'amount',
         'lates_day',
-        'payment_date'
+        'payment_date',
+        'borrow_date',
+        'return_date'
     ];
 
     /**

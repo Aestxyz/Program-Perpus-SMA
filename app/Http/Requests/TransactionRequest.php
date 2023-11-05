@@ -28,7 +28,7 @@ class TransactionRequest extends FormRequest
             'user_id' => 'required|exists:users,id',
             'borrow_date' => 'nullable|date',
             'return_date' => 'nullable|date|after:borrow_date',
-            'status' => 'required|in:Menunggu,Berjalan,Terlambat',
+            'status' => 'required|in:Menunggu,Berjalan,Terlambat,Selesai',
         ];
     }
 }

@@ -20,11 +20,17 @@
                     <td>{{ $item->return_date ?? '-' }}</td>
                     <td>
                         <div class="d-flex gap-2">
-                            @include('transaction.show')
+                            <a class="btn btn-primary btn-sm" href="{{ route('transactions.show', $item->id) }}"
+                                role="button">Lihat</a>
                             <form action="{{ route('transactions.finished', $item->id) }}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" class="btn btn-success btn-sm">Selesai</button>
+                            </form>
+                            <form action="{{ route('transactions.extratime', $item->id) }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-warning btn-sm">Perpanjang</button>
                             </form>
                         </div>
                     </td>
