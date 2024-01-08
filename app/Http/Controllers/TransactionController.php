@@ -29,7 +29,7 @@ class TransactionController extends Controller
 
         $borrow_date = Carbon::now()->format('Y-m-d');
         $return_date = Carbon::now()->addDays(7)->format('Y-m-d');
-        $users = User::select('id', 'name')->get();
+        $users = User::where('role', 'anggota')->select('id', 'name')->get();
         $books = Book::get();
 
         return view('transaction.index', [
@@ -77,7 +77,7 @@ class TransactionController extends Controller
     public function show($id)
     {
         $transaction = Transaction::findOrFail($id);
-        $users = User::select('id', 'name')->get();
+        $users = User::where('role', 'anggota')->select('id', 'name')->get();
         $books = Book::get();
 
         return view(
