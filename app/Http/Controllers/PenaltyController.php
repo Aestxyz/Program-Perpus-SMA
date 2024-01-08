@@ -32,10 +32,13 @@ class PenaltyController extends Controller
     }
     public function store(PenaltyRequest $request)
     {
-        $validate = $request->validated();
-        Penalty::create($validate);
+        $transaction = Transaction::findOrFail($request->transaction_id);
 
-        $transaction = Transaction::findOrfail($request->transaction_id);
+        $validatedData = $request->validated();
+        $validatedData['borrow_date'] = $transaction->borrow_date;
+        $validatedData['return_date'] = $transaction->return_date;
+
+        Penalty::create($validatedData);
         $transaction->update([
             'status' => 'Selesai',
             'return_date' => Carbon::now()->format('Y-m-d'),
