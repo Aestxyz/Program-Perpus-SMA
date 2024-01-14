@@ -11,12 +11,13 @@ class Penalty extends Model
     use HasFactory;
 
     protected $fillable = [
-        'transaction_id',
+        'name',
         'amount',
         'lates_day',
         'payment_date',
         'borrow_date',
-        'return_date'
+        'return_date',
+        'description'
     ];
 
     /**

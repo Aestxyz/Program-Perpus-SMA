@@ -39,7 +39,7 @@
                                 <h6 class="mb-0">Rp. {{ $amount }}</h6>
                             </div>
                             <div class="my-5 text-center">
-                                @include('penalty.store')
+                                @include('penalty.penalty_transaction')
                                 <div class="divider divider-primary">
                                     <div class="divider-text">Atau</div>
                                 </div>

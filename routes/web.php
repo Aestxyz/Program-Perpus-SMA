@@ -98,6 +98,7 @@ Route::middleware(['auth', 'role:Petugas,Kepala'])->group(function () {
         Route::get('/', [PenaltyController::class, 'index'])->name('penalties.index');
         Route::get('/{id}/penalty', [PenaltyController::class, 'show'])->name('penalties.show');
         Route::post('/', [PenaltyController::class, 'store'])->name('penalties.store');
+        Route::post('/penalty_transaction/', [PenaltyController::class, 'penalty_transaction'])->name('penalties.transaction');
         Route::post('/createAndUpdate', [PenaltyController::class, 'createAndUpdate'])->name('penalties.createAndUpdate');
     });
 

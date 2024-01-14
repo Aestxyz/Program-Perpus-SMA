@@ -14,11 +14,15 @@
             @foreach ($transactions as $no => $item)
                 <tr>
                     <td>{{ ++$no }}.</td>
-                    <td>{{ $item->user->name ?? '-' }}</td>
+                    <td>{{ $item->user->name }}</td>
                     <td>{{ $item->return_date <= now() && $item->status == 'Berjalan' ? 'Terlambat' : $item->status }}
                     </td>
-                    <td>{{ Carbon\carbon::parse($item->borrow_date)->format('d M Y') ?? '-' }}</td>
-                    <td>{{ Carbon\carbon::parse($item->return_date)->format('d M Y') ?? '-' }}</td>
+                    <td>
+                        {{ $item->borrow_date != null ? Carbon\carbon::parse($item->borrow_date)->format('d M Y') : '-' }}
+                    </td>
+                    <td>
+                        {{ $item->return_date != null ? Carbon\carbon::parse($item->return_date)->format('d M Y') : '-' }}
+                    </td>
                     <td>
                         <div class="d-flex gap-2">
                             @if (

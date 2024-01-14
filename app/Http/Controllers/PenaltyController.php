@@ -13,7 +13,7 @@ class PenaltyController extends Controller
 {
     public function index()
     {
-        $penalties = Penalty::get();
+        $penalties = Penalty::latest()->get();
         $total = 0;
 
         foreach ($penalties as $penalty) {
@@ -30,11 +30,22 @@ class PenaltyController extends Controller
             'dont_payment' => $dont_payment
         ]);
     }
+
     public function store(PenaltyRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        Penalty::create($validatedData);
+
+        return back();
+    }
+
+    public function penalty_transaction(PenaltyRequest $request)
     {
         $transaction = Transaction::findOrFail($request->transaction_id);
 
         $validatedData = $request->validated();
+        $validatedData['name'] = $transaction->user->name;
         $validatedData['borrow_date'] = $transaction->borrow_date;
         $validatedData['return_date'] = $transaction->return_date;
 
@@ -73,14 +84,16 @@ class PenaltyController extends Controller
         $transaction = Transaction::findOrFail($request->transaction_id);
 
         $validatedData = $request->validated();
+        $validatedData['name'] = $transaction->user->name;
         $validatedData['borrow_date'] = $transaction->borrow_date;
         $validatedData['return_date'] = $transaction->return_date;
+        $validatedData['description'] = 'Telat Pengembalian Buku';
 
         Penalty::create($validatedData);
 
         $transaction->update([
             'status' => 'Berjalan',
-            'return_date' => Carbon::parse($transaction->return_date)
+            'return_date' => Carbon::now()
                 ->addDays(7)
                 ->format('Y-m-d'),
         ]);

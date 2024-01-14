@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PenaltyRequest;
 use App\Http\Requests\TransactionRequest;
 use App\Models\Book;
+use App\Models\Penalty;
 use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;

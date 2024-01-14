@@ -11,8 +11,8 @@
                         <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
                             @forelse ($penalties->take(5) as $item)
                                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar pull-up" aria-label="{{ $item->transaction->user->name }}"
-                                    data-bs-original-title="{{ $item->transaction->user->name }}">
+                                    class="avatar pull-up" aria-label="{{ $item->name }}"
+                                    data-bs-original-title="{{ $item->name }}">
                                     <img class="rounded-circle" src="/assets/img/avatars/6.png" alt="Avatar">
                                 </li>
                             @empty
@@ -56,6 +56,9 @@
         </div>
     </div>
     <div class="card">
+        <div class="card-header">
+            @include('penalty.store')
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example" class="display table nowrap" style="width:100%">
@@ -64,20 +67,20 @@
                             <th>No.</th>
                             <th>Name</th>
                             <th>Jumlah Denda</th>
-                            <th>Jumlah Hari</th>
                             <th>Tanggal Pembayaran</th>
-                            <th>#</th>
+                            <th>Keterangan</th>
+                            {{-- <th>#</th> --}}
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($penalties as $no => $penalty)
                             <tr>
                                 <td>{{ ++$no }}.</td>
-                                <td>{{ $penalty->transaction->user->name }}</td>
+                                <td>{{ $penalty->name }}</td>
                                 <td>Rp. {{ $penalty->amount }}</td>
-                                <td>{{ $penalty->lates_day }} Hari</td>
-                                <td>{{ $penalty->payment_date }}</td>
-                                <td>@include('penalty.detail')</td>
+                                <td>{{ Carbon\carbon::parse($penalty->payment_date)->format('d M Y') }}</td>
+                                <td>{{ $penalty->description }}</td>
+                                {{-- <td>@include('penalty.detail')</td> --}}
                             </tr>
                         @endforeach
                     </tbody>
