@@ -2,36 +2,18 @@
     <li class="menu-item {{ request()->is('home') ? 'active' : '' }}">
         <a href="/home" class="menu-link text-body">
             <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
-            <div data-i18n="Home">Home</div>
+            <div data-i18n="Beranda">Beranda</div>
+        </a>
+    </li>
+
+    <li class="menu-item {{ request()->is('admins') ? 'active' : '' }}">
+        <a href="{{ route('users.officer') }}" class="menu-link text-body">
+            <i class="menu-icon tf-icons mdi mdi-human"></i>
+            <div data-i18n="Admin">Akun Admin</div>
         </a>
     </li>
 
     @if (Auth()->user()->role == 'Kepala')
-        <li class="menu-item {{ request()->is(['users', 'confirmation-account']) ? 'active' : '' }}">
-            <a href="/users" class="menu-link text-body menu-toggle">
-                <i class="menu-icon tf-icons mdi mdi-human"></i>
-                <div data-i18n="Users">Users</div>
-                <div class="badge bg-danger rounded-pill ms-auto {{ $pending == null ? 'd-none' : '' }}">
-                    {{ $pending }}
-                </div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('users.index') }}" class="menu-link text-body">
-                        <div data-i18n="Data-User">Data User</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('confirmations.index') }}" class="menu-link text-body">
-                        <div data-i18n="Konfirmasi-Akun">Konfirmasi Akun</div>
-                        <div class="badge bg-danger rounded-pill ms-auto {{ $pending == null ? 'd-none' : '' }}">
-                            {{ $pending }}
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
         <li class="menu-item {{ request()->is('reports') ? 'active' : '' }}">
             <a href="/reports" class="menu-link text-body">
                 <i class="menu-icon tf-icons mdi mdi-cash"></i>

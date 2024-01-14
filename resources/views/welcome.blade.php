@@ -15,13 +15,14 @@
 
                     <div class="lc-block mb-5">
                         <div editable="rich">
-                            <p class="rfs-8"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus id
-                                ligula malesuada placerat sit amet quis enim.</p>
+                            <p class="rfs-8"> Sistem ini dirancang untuk memudahkan akses ke koleksi buku dan sumber
+                                daya lainnya. Dengan fitur pencarian canggih, Anda dapat dengan mudah menemukan buku
+                                yang Anda cari.</p>
                         </div>
                     </div>
 
                     <div class="lc-block mb-6"><a class="btn btn-primary px-4 me-md-2 btn-lg"
-                            href="{{ route('catalog.index') }}" role="button">Get it now</a>
+                            href="{{ route('catalog.index') }}" role="button">Coba Sekarang</a>
                     </div>
                 </div>
 

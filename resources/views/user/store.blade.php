@@ -110,9 +110,12 @@
                             <div class="form-floating form-floating-outline mb-3">
                                 <select class="form-select form-control @error('role') is-invalid @enderror"
                                     name="role" id="role">
-                                    <option selected disabled>Pilih satu</option>
+                                    @if (auth()->user()->role == 'Kepala')
+                                        <option selected disabled>Pilih satu</option>
+                                        <option value="Petugas">
+                                            Petugas</option>
+                                    @endif
                                     <option value="Anggota">Anggota</option>
-                                    <option value="Petugas">Petugas</option>
                                 </select>
                                 <label for="role">Status</label>
                                 @error('role')
@@ -125,8 +128,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

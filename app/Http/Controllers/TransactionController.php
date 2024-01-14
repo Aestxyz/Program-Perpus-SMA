@@ -26,7 +26,8 @@ class TransactionController extends Controller
         $finished = Transaction::where('status', 'Selesai')
             ->orderBy('updated_at', 'DESC')
             ->get();
-
+        $transactions = Transaction::orderBy('status', 'ASC')
+            ->get();
         $borrow_date = Carbon::now()->format('Y-m-d');
         $return_date = Carbon::now()->addDays(7)->format('Y-m-d');
         $users = User::where('role', 'anggota')->select('id', 'name')->get();
@@ -41,6 +42,7 @@ class TransactionController extends Controller
             'return_date' => $return_date,
             'users' => $users,
             'books' => $books,
+            'transactions' => $transactions,
         ]);
     }
     public function store(TransactionRequest $request)

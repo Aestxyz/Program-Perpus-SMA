@@ -1,9 +1,10 @@
 <x-auth.layout>
+    @include('layouts.table')
+
     <x-slot name="title">User ({{ $user->name }})</x-slot>
     <div class="card">
         <div class="card-header pb-0">
-            <h4 class="mb-0">Profile Details</h4>
-            <p>Informasi pengguna di perbarui sejak {{ $user->updated_at }}</p>
+            <h4 class="mb-3">Profil Pengguna</h4>
         </div>
 
         <div class="card-body">
@@ -69,9 +70,7 @@
                 </div>
                 <div class="col-md">
                     <div class="form-floating form-floating-outline mb-3">
-                        <select class="form-select form-control"
-                                name="role"
-                            id="role" disabled>
+                        <select class="form-select form-control" name="role" id="role" disabled>
                             <option disabled>Pilih satu</option>
                             <option value="Anggota" {{ $user->role == 'Anggota' ? '' : '' }}>Anggota
                             </option>
@@ -83,10 +82,42 @@
             </div>
         </div>
 
-        <div class="card-body text-end">
-            <h4 class="mb-0">History</h4>
-            <p>informasi pengguna di perbarui sejak {{ $user->updated_at }}</p>
-        </div>
-
+        @if ($user->role == 'Anggota')
+            <div class="card-body">
+                <h4 class="mb-3">Riwayat Peminjaman</h4>
+                <div class="table-responsive">
+                    <table id="example" class="display table nowrap text-center" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Lengkap</th>
+                                <th>status</th>
+                                <th>Tanggal Pinjam</th>
+                                <th>Tanggal Kembali</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($transaction as $no => $item)
+                                <tr>
+                                    <td>{{ ++$no }}.</td>
+                                    <td>{{ $item->user->name ?? '-' }}</td>
+                                    <td><span class="badge bg-primary">{{ $item->status }}</span></td>
+                                    <td>{{ $item->borrow_date ?? '-' }}</td>
+                                    <td>{{ $item->return_date ?? '-' }}</td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a class="btn btn-primary btn-sm"
+                                                href="{{ route('transactions.show', $item->id) }}"
+                                                role="button">Lihat</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
     </div>
 </x-auth.layout>

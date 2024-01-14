@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -14,11 +15,23 @@ class UserController extends Controller
     public function index()
     {
         return view('user.index', [
-            'users' => User::whereNotNull('email_verified_at')->latest()->get(),
+            'users' => User::whereNotNull('email_verified_at')
+                ->where('role', 'Anggota')
+                ->latest()
+                ->get(),
             'member' => User::where('role', 'Anggota')
                 ->whereNotNull('email_verified_at')
                 ->get(),
-            'officer' => User::where('role', 'Petugas')
+        ]);
+    }
+    public function officer()
+    {
+        return view('user.officer', [
+            'users' => User::whereNotNull('email_verified_at')
+                ->where('role', 'Petugas')
+                ->latest()
+                ->get(),
+            'officers' => User::where('role', 'Petugas')
                 ->whereNotNull('email_verified_at')
                 ->get(),
         ]);
@@ -53,9 +66,11 @@ class UserController extends Controller
     }
     public function show($slug)
     {
-
+        $user = User::whereSlug($slug)->first();
         return view('user.show', [
-            'user' => User::whereSlug($slug)->first()
+            'user' => $user,
+            'transaction' => Transaction::where('user_id', $user->id)
+                ->get(),
         ]);
     }
     public function destroy($id)

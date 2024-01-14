@@ -39,8 +39,8 @@
                     </div>
                     <!-- /Logo -->
                     <div class="card-body mt-2">
-                        <h4 class="mb-2">Adventure starts here 🚀</h4>
-                        <p class="mb-4">Make your app management easy and fun!</p>
+                        <h4 class="mb-2">Pinjam Buku di Perpustakaan 🚀</h4>
+                        <p class="mb-4">Buat peminjaman buku mu lebih asuk sekarang</p>
 
                         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
                             @csrf
@@ -102,7 +102,7 @@
                                                     name="password_confirmation" required autocomplete="new-password"
                                                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                                     aria-describedby="password" />
-                                                <label for="password">{{ __('Confirm Password') }}</label>
+                                                <label for="password">{{ __('Ulangi Password') }}</label>
                                             </div>
                                             <span class="input-group-text cursor-pointer"><i
                                                     class="mdi mdi-eye-off-outline"></i></span>
@@ -178,18 +178,18 @@
                                     <input class="form-check-input" type="checkbox" id="terms-conditions"
                                         name="terms" />
                                     <label class="form-check-label" for="terms-conditions">
-                                        I agree to
-                                        <a href="javascript:void(0);">privacy policy & terms</a>
+                                        Saya setuju dengan
+                                        <a href="javascript:void(0);">kebijakan & ketentuan dari pihak perpustakaan</a>
                                     </label>
                                 </div>
                             </div>
-                            <button class="btn btn-primary d-grid w-100">Sign up</button>
+                            <button class="btn btn-primary d-grid w-100">Daftar</button>
                         </form>
 
                         <p class="text-center">
-                            <span>Already have an account?</span>
+                            <span>Sudah Punya Akun?</span>
                             <a href="/login">
-                                <span>Sign in instead</span>
+                                <span>Login Sekarang</span>
                             </a>
                         </p>
                     </div>

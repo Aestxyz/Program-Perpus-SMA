@@ -1,72 +1,70 @@
 <x-auth.layout>
     <x-slot name="title">Transaction Library</x-slot>
     @include('layouts.table')
-    <div class="row gy-4 mb-3">
-        <div class="col-md-12 col-lg-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-12 col-md">
-                            <div class="card-body">
-                                <h4 class="card-title mb-4">Informasi Peminjaman dan Pengembalian Buku Perpustakaan</h4>
-                                <p>Informasi telah diperbarui pada {{ now() }}</p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 position-relative text-center d-lg-none">
-                            <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/front-pages/landing-page/sitting-girl-with-laptop.png"
-                                class="card-img-position bottom-0 w-50" alt="View Profile">
-                        </div>
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Informasi Peminjaman dan Pengembalian Buku Perpustakaan</h4>
+                        <p>Informasi telah diperbarui pada {{ now() }}</p>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-3 col-6">
-                            <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                    <div class="small mb-1">Menunggu</div>
-                                    <h5 class="mb-0">{{ $waiting->count() }}</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                    <div class="small mb-1">Berjalan</div>
-                                    <h5 class="mb-0">{{ $walking->count() }}</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                    <div class="small mb-1">Terlambat</div>
-                                    <h5 class="mb-0">{{ $penalty->count() }}</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                    <div class="small mb-1">Selesai</div>
-                                    <h5 class="mb-0">{{ $finished->count() }}</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-12 col-md-6 position-relative text-center d-lg-none">
+                    <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/front-pages/landing-page/sitting-girl-with-laptop.png"
+                        class="card-img-position bottom-0 w-50" alt="View Profile">
                 </div>
             </div>
-
         </div>
-
-        <div class="col-lg-8">
-            <div class="card">
-                <h5 class="card-header mb-0 pb-0">Tambah Peminjaman Buku</h5>
-                @include('transaction.store')
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-3 col-6">
+                    <div class="d-flex align-items-center">
+                        <div class="ms-3">
+                            <div class="small mb-1">Menunggu</div>
+                            <h5 class="mb-0">{{ $waiting->count() }}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="d-flex align-items-center">
+                        <div class="ms-3">
+                            <div class="small mb-1">Berjalan</div>
+                            <h5 class="mb-0">{{ $walking->count() }}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="d-flex align-items-center">
+                        <div class="ms-3">
+                            <div class="small mb-1">Terlambat</div>
+                            <h5 class="mb-0">{{ $penalty->count() }}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="d-flex align-items-center">
+                        <div class="ms-3">
+                            <div class="small mb-1">Selesai</div>
+                            <h5 class="mb-0">{{ $finished->count() }}</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="card mb-3">
+        <h5 class="card-header mb-0 pb-0">Tambah Peminjaman Buku</h5>
+        @include('transaction.store')
+    </div>
 
     <div class="card">
+        <div class="card-body">
+            @include('transaction.table.index')
+        </div>
+    </div>
+
+    {{-- <div class="card">
         <div class="card-header">
             <div class="nav-align-top">
                 <ul class="nav nav-tabs nav-fill" role="tablist">
@@ -105,7 +103,7 @@
             <div class="tab-content p-0">
                 <div class="tab-pane fade show active" id="navs-justified-waiting" role="tabpanel">
                     <div class="card-body">
-                        @include('transaction.table.waiting')
+                        @include('transaction.table.index')
                     </div>
                 </div>
                 <div class="tab-pane fade" id="navs-justified-walking" role="tabpanel">
@@ -125,5 +123,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </x-auth.layout>

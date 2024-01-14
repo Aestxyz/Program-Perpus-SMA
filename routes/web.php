@@ -53,6 +53,7 @@ Route::middleware(['auth', 'role:Petugas,Kepala'])->group(function () {
     });
 
     Route::prefix('users')->group(function () {
+        Route::get('/officer', [UserController::class, 'officer'])->name('users.officer');
         Route::get('/', [UserController::class, 'index'])->name('users.index');
         Route::post('/', [UserController::class, 'store'])->name('users.store');
         Route::get('/{slug}/show', [UserController::class, 'show'])->name('users.show');

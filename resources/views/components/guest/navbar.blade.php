@@ -11,7 +11,7 @@
             </button>
             <div class="collapse navbar-collapse" id="nav_lc">
                 <ul class="navbar-nav my-3 my-lg-0 ms-lg-3 me-auto">
-                    <li class="nav-item me-4"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item me-4"><a class="nav-link" href="/">Beranda</a></li>
                     <li class="nav-item me-4"><a class="nav-link" href="{{ route('catalog.index') }}">Koleksi Buku</a>
                     </li>
                 </ul>
@@ -26,11 +26,11 @@
                                 @csrf
                             </form>
                         @else
-                            <a class="btn btn-outline-primary me-2" href="/home">Dashboard</a>
+                            <a class="btn btn-outline-primary me-2" href="/home">Beranda Admin</a>
                         @endif
                     @else
-                        <a class="btn btn-outline-primary me-2" href="/login">Login</a>
-                        <a class="btn btn-primary" href="/register">Register</a>
+                        <a class="btn btn-outline-primary me-2" href="/login">Masuk</a>
+                        <a class="btn btn-primary" href="/register">Daftar</a>
                     @endauth
                 </div>
             </div>
