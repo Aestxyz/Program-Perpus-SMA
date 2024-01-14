@@ -52,14 +52,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required','string','max:50'],
-            'email' => ['required','string','email','max:50','unique:users'],
-            'password' => ['required','string','min:8','confirmed'],
-            'identify' => ['required','numeric','digits_between:8,30','unique:users,identify'],
-            'gender'  => ['required','in:Laki-laki,Perempuan'],
-            'telp' => ['required','numeric','digits_between:11,12'],
-            'role' => ['required','in:Anggota'],
-            'birthdate' => ['required','date'],
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'identify' => ['required', 'numeric', 'digits_between:8,30', 'unique:users,identify'],
+            'gender'  => ['required', 'in:Laki-laki,Perempuan'],
+            'telp' => ['required', 'numeric', 'digits_between:11,12', 'unique:users, telp'],
+            'role' => ['required', 'in:Anggota'],
+            'birthdate' => ['required', 'date'],
         ]);
     }
 
