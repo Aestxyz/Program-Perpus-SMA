@@ -6,14 +6,14 @@
         </a>
     </li>
 
-    <li class="menu-item {{ request()->is('admins') ? 'active' : '' }}">
-        <a href="{{ route('users.officer') }}" class="menu-link text-body">
-            <i class="menu-icon tf-icons mdi mdi-human"></i>
-            <div data-i18n="Admin">Akun Admin</div>
-        </a>
-    </li>
 
     @if (Auth()->user()->role == 'Kepala')
+        <li class="menu-item {{ request()->is('admins') ? 'active' : '' }}">
+            <a href="{{ route('users.officer') }}" class="menu-link text-body">
+                <i class="menu-icon tf-icons mdi mdi-human"></i>
+                <div data-i18n="Admin">Akun Admin</div>
+            </a>
+        </li>
         <li class="menu-item {{ request()->is('reports') ? 'active' : '' }}">
             <a href="/reports" class="menu-link text-body">
                 <i class="menu-icon tf-icons mdi mdi-cash"></i>

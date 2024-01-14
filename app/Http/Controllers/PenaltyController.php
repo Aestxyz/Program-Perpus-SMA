@@ -100,4 +100,11 @@ class PenaltyController extends Controller
 
         return redirect()->route('penalties.index')->with('success', 'Proses perpanjangan waktu peminjaman dan pengembalian buku telah dilakukan.');
     }
+
+    public function destroy($id)
+    {
+        Penalty::whereId($id)->delete();
+
+        return back();
+    }
 }

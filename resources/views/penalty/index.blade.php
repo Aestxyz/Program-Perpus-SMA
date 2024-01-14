@@ -69,7 +69,7 @@
                             <th>Jumlah Denda</th>
                             <th>Tanggal Pembayaran</th>
                             <th>Keterangan</th>
-                            {{-- <th>#</th> --}}
+                            <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,7 +80,16 @@
                                 <td>Rp. {{ $penalty->amount }}</td>
                                 <td>{{ Carbon\carbon::parse($penalty->payment_date)->format('d M Y') }}</td>
                                 <td>{{ $penalty->description }}</td>
-                                {{-- <td>@include('penalty.detail')</td> --}}
+                                <td>
+                                    <form action="{{ route('penalties.destroy', $penalty->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            Hapus
+                                        </button>
+
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
