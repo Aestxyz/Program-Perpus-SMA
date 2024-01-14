@@ -19,9 +19,8 @@
                     <!-- Logo -->
                     <div class="app-brand justify-content-center mt-5">
                         <a href="#" class="app-brand-link gap-2">
-                            <img class="img-fluid"
-                                src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt=""
-                                width="28px" height="28px">
+                            <img class="img-fluid" src="/assets/img/logo.png" alt="" width="28px"
+                                height="28px">
                             <span class="app-brand-text demo text-heading fw-semibold">SI-perpus</span>
                         </a>
                     </div>

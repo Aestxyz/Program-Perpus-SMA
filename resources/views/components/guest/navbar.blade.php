@@ -2,8 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-light py-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img class="img-fluid" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg"
-                    alt="" width="48px" height="48px">
+                <img class="img-fluid" src="/assets/img/logo.png" alt="" width="48px" height="48px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav_lc"
                 aria-controls="nav_lc" aria-expanded="false" aria-label="Toggle navigation">

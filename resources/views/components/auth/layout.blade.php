@@ -56,8 +56,7 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-body shadow">
                 <div class="app-brand demo">
-                    <img class="img-fluid" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg"
-                        alt="" width="28px" height="28px">
+                    <img class="img-fluid" src="/assets/img/logo.png" alt="" width="28px" height="28px">
                     <a href="/home" class="app-brand-link">
                         <span class="app-brand-text text-body demo menu-text fw-semibold ms-2">SI-Perpus</span>
                     </a>
