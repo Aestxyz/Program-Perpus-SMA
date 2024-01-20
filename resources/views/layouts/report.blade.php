@@ -70,7 +70,7 @@
     $('#example').DataTable( {
     dom: 'QBfrtip',
     buttons: [
-    'excel', 'pdf', 'print'
+    'excel', 'print'
     ]
     } );
 @endpush

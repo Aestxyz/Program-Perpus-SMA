@@ -15,7 +15,7 @@
                 <tr>
                     <td>{{ ++$no }}.</td>
                     <td>{{ $item->user->name }}</td>
-                    <td>{{ $item->return_date <= now() && $item->status == 'Berjalan' ? 'Terlambat' : $item->status }}
+                    <td>{{ $item->return_date < now() && $item->status == 'Berjalan' ? 'Terlambat' : $item->status }}
                     </td>
                     <td>
                         {{ $item->borrow_date != null ? Carbon\carbon::parse($item->borrow_date)->format('d M Y') : '-' }}
@@ -26,7 +26,7 @@
                     <td>
                         <div class="d-flex gap-2">
                             @if (
-                                $item->return_date <= now() &&
+                                $item->return_date < now() &&
                                     $item->status != 'Tolak' &&
                                     $item->status != 'Menunggu' &&
                                     $item->status != 'Selesai')

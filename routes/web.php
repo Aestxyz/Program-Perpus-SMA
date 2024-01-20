@@ -103,7 +103,11 @@ Route::middleware(['auth', 'role:Petugas,Kepala'])->group(function () {
         Route::delete('/{id}', [PenaltyController::class, 'destroy'])->name('penalties.destroy');
     });
 
-    Route::get('/reports', [ReportController::class, 'index'])->name('reports');
+    Route::get('/reports/transactions', [ReportController::class, 'transactions'])->name('reports.transactions');
+    Route::get('/reports/members', [ReportController::class, 'members'])->name('reports.members');
+    Route::get('/reports/officers', [ReportController::class, 'officers'])->name('reports.officers');
+    Route::get('/reports/penalties', [ReportController::class, 'penalties'])->name('reports.penalties');
+    Route::get('/reports/books', [ReportController::class, 'books'])->name('reports.books');
 });
 
 Route::middleware(['auth', 'role:Anggota'])->group(function () {

@@ -76,11 +76,34 @@
                 <div data-i18n="penalties">Denda</div>
             </a>
         </li>
-        <li class="menu-item {{ request()->is('reports') ? 'active' : '' }}">
-            <a href="/reports" class="menu-link text-body">
-                <i class="menu-icon tf-icons mdi mdi-cash"></i>
-                <div data-i18n="reports">Laporan</div>
+        <li
+            class="menu-item {{ request()->is(['/reports/books', '/reports/users', '/reports/transactions', '/reports/penalties']) ? 'active' : '' }}">
+            <a href="" class="menu-link text-body menu-toggle">
+                <i class="menu-icon tf-icons mdi mdi-human"></i>
+                <div data-i18n="report">Laporan</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('reports.members') }}" class="menu-link text-body">
+                        <div data-i18n="reports-members">Laporan Anggota</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('reports.books') }}" class="menu-link text-body">
+                        <div data-i18n="reports-books">Laporan Buku</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('reports.transactions') }}" class="menu-link text-body">
+                        <div data-i18n="reports-transactions">Laporan Transaksi</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('reports.penalties') }}" class="menu-link text-body">
+                        <div data-i18n="reports-penalties">Laporan Denda</div>
+                    </a>
+                </li>
+            </ul>
         </li>
     @endif
 

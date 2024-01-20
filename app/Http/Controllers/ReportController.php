@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    public function index()
+    public function transactions()
     {
         $transactions = Transaction::get();
-        return view('transaction.report', [
+        return view('report.transaction', [
             'transactions' => Transaction::latest()->get(),
         ]);
     }
