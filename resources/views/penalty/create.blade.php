@@ -25,7 +25,7 @@
                                     <td>{{ $transaction->borrow_date }}</td>
                                     <td>{{ $transaction->return_date }}</td>
                                     <td>{{ $transaction->status->name }}</td>
-                                    <td>Rp. {{ $transaction->status->amount }}</td>
+                                    <td>Rp. {{ $transaction->penalty_total }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -46,7 +46,7 @@
                                 </button>
                             </div>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>

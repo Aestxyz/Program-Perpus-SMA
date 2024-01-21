@@ -41,7 +41,8 @@
                                 <td>
                                     {{ $item->return_date != null ? \Carbon\Carbon::parse($item->return_date)->format('d M Y') : '-' }}
                                 </td>
-                                <td>{{ $item->return_date < now() ? Carbon\carbon::parse($item->return_date)->diffInDays(now()) : '0' }}
+                                <td>
+                                    {{ $item->return_date < now() ? Carbon\carbon::parse($item->return_date)->diffInDays(now()) : '0' }}
                                     Hari
                                 </td>
                                 <form action="{{ route('transactions.action', $item->id) }}" method="post">

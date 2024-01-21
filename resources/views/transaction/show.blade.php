@@ -30,7 +30,11 @@
                                 <th scope="col">Tgl. Kembali</th>
                                 <th scope="col">Buku</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">#</th>
+                                <th scope="col">Total Denda</th>
+                                <th scope="col">Status Denda</th>
+                                @if ($transaction->status_id == '3')
+                                    <th scope="col">Jumlah Terlambat (Hari)</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -39,7 +43,22 @@
                                 <td>{{ $transaction->return_date }}</td>
                                 <td>{{ $transaction->book->title }}</td>
                                 <td><span class="badge">{{ $transaction->status->name }}</span></td>
-                                <td>{{ $transaction->penalties->first() ? $transaction->penalties->first()->status : 'Belum Bayar' }}</td>
+                                <td>{{ $transaction->penalty_total }}</td>
+                                <td>
+                                    @if ($transaction->penalties->first())
+                                        {{ $transaction->penalties->first()->status }}
+                                    @elseif (!$transaction->penalties->first() && $transaction->penalty_total > 0)
+                                        Belum Bayar
+                                    @elseif ($transaction->penalty_total == 0)
+                                        -
+                                    @endif
+                                </td>
+                                @if ($transaction->status_id == '3')
+                                    <td>
+                                        {{ $transaction->return_date < now() ? Carbon\carbon::parse($transaction->return_date)->diffInDays(now()) : '0' }}
+                                        Hari
+                                    </td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -94,19 +113,18 @@
                         Pembayaran</small>
                     @if ($transaction->penalties->first())
                         <img src="{{ Storage::url($transaction->penalties->first()->image) ?? null }}
-                        "
+                    "
                             class="img-fluid rounded-top" alt="" />
-                    @else
+                    @elseif (!$transaction->penalties->first() && $transaction->penalty_total > 0)
                         <div class="card bg-secondary" style="height: 250px">
                         </div>
+                    @elseif ($transaction->penalty_total == 0)
+                        Tidak dibutuhkan
                     @endif
                 </div>
             </div>
         </div>
         <!--/ Customer Sidebar -->
-
-
-
     </div>
 
 </x-auth.layout>

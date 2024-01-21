@@ -40,7 +40,8 @@ class TransactionController extends Controller
     public function return()
     {
         $transactions = Transaction::where('status_id', '!=', 1)
-            ->orWhere('status_id',  '!=', 2)
+            ->where('status_id',  '!=', 2)
+            ->where('status_id',  '!=', 8)
             ->orderBy('updated_at', 'desc')
             ->get();
 
@@ -95,7 +96,6 @@ class TransactionController extends Controller
     }
     public function update(TransactionRequest $request, $id)
     {
-        // dd($request->all());
         $validate = $request->validated();
         $transaction = Transaction::findOrFail($id);
         $findbook = Book::findOrFail($transaction->book->id);
@@ -108,6 +108,9 @@ class TransactionController extends Controller
             $book->book_count--;
             $book->save();
         }
+
+        $validate['status_id'] = $request->status_id;
+        $validate['penalty_total'] = $request->penalty;
 
         $transaction->update($validate);
 

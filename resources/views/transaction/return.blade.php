@@ -23,7 +23,12 @@
                             @foreach ($transactions as $item)
                                 <tr>
                                     <td>
-                                        <div class="d-flex gap-2">
+                                        <div class="d-flex justify-content-center gap-2">
+                                            @if (!$item->penalties->first() && $item->penalty_total > 0)
+                                                <a class="btn btn-danger btn-sm"
+                                                    href="{{ route('penalties.create', $item->id) }}"
+                                                    role="button">Bayar</a>
+                                            @endif
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{ route('transactions.show', $item->id) }}"
                                                 role="button">Lihat</a>
@@ -41,10 +46,16 @@
                                         {{ $item->status->name }}
                                     </td>
                                     <td>
-                                        Rp. {{ $item->penalty_total ?? '0' }}
+                                        {{ $item->penalty_total && $item->status != '4' ? 'Rp. ' . $item->penalty_total : '-' }}
                                     </td>
                                     <td>
-                                        {{ $item->penalties->first()->status ?? 'Belum Lunas' }}
+                                        @if ($item->penalties->first())
+                                            {{ $item->penalties->first()->status }}
+                                        @elseif (!$item->penalties->first() && $item->penalty_total > 0)
+                                            Belum Bayar
+                                        @elseif ($item->penalty_total == 0)
+                                            -
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
