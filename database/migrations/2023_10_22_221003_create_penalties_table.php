@@ -15,13 +15,9 @@ class CreatePenaltiesTable extends Migration
     {
         Schema::create('penalties', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('amount');
-            $table->string('borrow_date')->nullable();
-            $table->string('return_date')->nullable();
-            $table->string('lates_day')->nullable();
-            $table->dateTime('payment_date');
-            $table->longText('description');
+            $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
+            $table->string('image');
+            $table->string('status');
             $table->timestamps();
         });
     }

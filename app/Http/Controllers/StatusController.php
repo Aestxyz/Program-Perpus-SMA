@@ -17,7 +17,7 @@ class StatusController extends Controller
             # Konfirmasi...
             $transaction->update([
                 'status_id' => $request->status_id,
-                'penalty' => $request->penalty ?? 0,
+                'penalty_total' => $request->penalty ?? 0,
                 'borrow_date' => Carbon::now()->format('Y-m-d'),
                 'return_date' => Carbon::now()->addDays(7)->format('Y-m-d'),
             ]);
@@ -27,51 +27,51 @@ class StatusController extends Controller
             # Terlambat...
             $transaction->update([
                 'status_id' => $request->status_id,
-                'penalty' => $request->penalty ?? 0,
+                'penalty_total' => $request->penalty ?? 0,
 
             ]);
-            return redirect()->route('transactions.return');
+            return redirect()->route('penalties.create', $transaction->id);
         } elseif ($request->status_id == 4) {
             # Dikembalikan...
             $transaction->update([
                 'status_id' => $request->status_id,
-                'penalty' => $request->penalty ?? 0,
+                'penalty_total' => $request->penalty ?? 0,
 
             ]);
-            return redirect()->route('transactions.return');
+            return redirect()->route('penalties.create', $transaction->id);
         } elseif ($request->status_id == 5) {
             # Hilang...
             $transaction->update([
                 'status_id' => $request->status_id,
-                'penalty' => $request->penalty ?? 0,
+                'penalty_total' => $request->penalty ?? 0,
 
             ]);
-            return redirect()->route('transactions.return');
+            return redirect()->route('penalties.create', $transaction->id);
         } elseif ($request->status_id == 6) {
             # Rusak Ringan...
             $transaction->update([
                 'status_id' => $request->status_id,
-                'penalty' => $request->penalty ?? 0,
+                'penalty_total' => $request->penalty ?? 0,
 
             ]);
-            return redirect()->route('transactions.return');
+            return redirect()->route('penalties.create', $transaction->id);
         } elseif ($request->status_id == 7) {
             # Rusak Berat...
             $transaction->update([
                 'status_id' => $request->status_id,
-                'penalty' => $request->penalty ?? 0,
+                'penalty_total' => $request->penalty ?? 0,
 
             ]);
-            return redirect()->route('transactions.return');
+            return redirect()->route('penalties.create', $transaction->id);
         } elseif ($request->status_id == 8) {
             # Tolak...
             $transaction->update([
                 'status_id' => $request->status_id,
-                'penalty' => $request->penalty ?? 0,
+                'penalty_total' => $request->penalty ?? 0,
                 'borrow_date' => null,
                 'return_date' => null,
             ]);
-            return redirect()->route('transactions.return');
+            return redirect()->route('penalties.create', $transaction->id);
         }
     }
 }

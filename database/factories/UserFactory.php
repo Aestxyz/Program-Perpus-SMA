@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'birthdate' => $this->faker->date(),
             'gender' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
             'identify' => $this->faker->ean13,
-            'email_verified_at' => null,
+            'email_verified_at' => now(),
 
         ];
     }

@@ -1,6 +1,6 @@
 <!-- Modal trigger button -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalId">
-    Edit
+    ubah
 </button>
 
 <!-- Modal Body -->

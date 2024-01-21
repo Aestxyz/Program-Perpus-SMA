@@ -24,11 +24,9 @@ class PenaltyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|min:5',
-            'amount' => 'required|numeric',
-            'lates_day' => 'required|string',
-            'payment_date' => 'required|date',
-            'description' => 'string|min:5',
+            'transaction_id' => 'required|exists:transactions,id',
+            'image' => 'required',
+            'status' => 'required',
         ];
     }
 }

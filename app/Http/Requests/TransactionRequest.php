@@ -29,7 +29,7 @@ class TransactionRequest extends FormRequest
             'borrow_date' => 'nullable|date',
             'return_date' => 'nullable|date|after:borrow_date',
             'status_id',
-            'penalty',
+            'penalty_total',
         ];
     }
 }

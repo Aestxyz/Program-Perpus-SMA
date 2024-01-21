@@ -13,7 +13,8 @@ class Transaction extends Model
 
     protected $with = [
         'book',
-        'user'
+        'user',
+        'penalties'
     ];
 
     protected $fillable = [
@@ -23,7 +24,7 @@ class Transaction extends Model
         'borrow_date',
         'return_date',
         'status_id',
-        'penalty',
+        'penalty_total',
     ];
 
     /**

@@ -9,17 +9,26 @@
                     <table id="example" class="display table nowrap text-center" style="width:100%">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>nama lengkap</th>
                                 <th>status</th>
                                 <th>Tanggal Pinjam</th>
                                 <th>Tanggal Kembali</th>
                                 <th>Status</th>
                                 <th>Denda</th>
+                                <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($transactions as $item)
                                 <tr>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a class="btn btn-primary btn-sm"
+                                                href="{{ route('transactions.show', $item->id) }}"
+                                                role="button">Lihat</a>
+                                        </div>
+                                    </td>
                                     <td>{{ $item->user->name }}</td>
                                     <td>{{ $item->status->name }}</td>
                                     <td>
@@ -32,7 +41,10 @@
                                         {{ $item->status->name }}
                                     </td>
                                     <td>
-                                        Rp. {{ $item->penalty ?? '0' }}
+                                        Rp. {{ $item->penalty_total ?? '0' }}
+                                    </td>
+                                    <td>
+                                        {{ $item->penalties->first()->status ?? 'Belum Lunas' }}
                                     </td>
                                 </tr>
                             @endforeach
