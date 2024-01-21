@@ -53,17 +53,10 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
-            <select class="form-select" name="status" id="status">
-                <option disabled>Select one</option>
-                <option {{ $transaction->status == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
-                <option {{ $transaction->status == 'Berjalan' ? 'selected' : '' }}>Berjalan</option>
-                <option {{ $transaction->status == 'Terlambat' ? 'selected' : '' }}>Terlambat</option>
-                <option {{ $transaction->status == 'Selesai' ? 'selected' : '' }}>Selesai</option>
-            </select>
+            @livewire('status')
         </div>
         <div class="text-end">
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" class="btn btn-primary btn-xl">Simpan</button>
         </div>
     </div>
 </form>

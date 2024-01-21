@@ -41,6 +41,9 @@ class APISeeder extends Seeder
                             'publisher' => $bookDetails['publisher'],
                             'synopsis' => $bookDetails['description'],
                             'book_count' => rand(1, 100),
+                            'source' => 'Data BOSS',
+                            'bookshelf' => 'Rak 1',
+                            'price' => rand(25, 90) . 0000
                         ];
 
                         $bookModel = Book::create($bookData);

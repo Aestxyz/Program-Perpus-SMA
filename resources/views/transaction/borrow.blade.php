@@ -2,102 +2,58 @@
     <x-slot name="title">Transaction Library</x-slot>
     @include('layouts.table')
     <div class="card mb-3">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-12 col-md">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Informasi Peminjaman dan Pengembalian Buku Perpustakaan</h4>
-                        <p>Informasi telah diperbarui pada {{ now() }}</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 position-relative text-center d-lg-none">
-                    <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/front-pages/landing-page/sitting-girl-with-laptop.png"
-                        class="card-img-position bottom-0 w-50" alt="View Profile">
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="row g-3">
-                <div class="col-md-3 col-6">
-                    <div class="d-flex align-items-center">
-                        <div class="ms-3">
-                            <div class="small mb-1">Menunggu</div>
-                            <h5 class="mb-0">{{ $transactions->count() }}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="d-flex align-items-center">
-                        <div class="ms-3">
-                            <div class="small mb-1">Berjalan</div>
-                            <h5 class="mb-0">{{ $transactions->count() }}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="d-flex align-items-center">
-                        <div class="ms-3">
-                            <div class="small mb-1">Terlambat</div>
-                            <h5 class="mb-0">{{ $transactions->count() }}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="d-flex align-items-center">
-                        <div class="ms-3">
-                            <div class="small mb-1">Selesai</div>
-                            <h5 class="mb-0">{{ $transactions->count() }}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
         <h5 class="card-header mb-0 pb-0">Tambah Peminjaman Buku</h5>
         @include('transaction.store')
+
     </div>
 
     <div class="card">
         <div class="card-body">
+            <h4 class="text-center">Tabel Peminjaman Buku</h4>
             <div class="table-responsive">
                 <table id="example" class="display table nowrap text-center" style="width:100%">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>nama lengkap</th>
                             <th>status</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
-                            <th>#</th>
+                            <th>Jumlah Terlambat (Hari)</th>
+                            <th>Status</th>
                             <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($transactions as $item)
                             <tr>
+                                <td>
+                                    <div class="d-flex gap-2">
+                                        <a class="btn btn-primary btn-sm"
+                                            href="{{ route('transactions.show', $item->id) }}" role="button">Lihat</a>
+                                    </div>
+                                </td>
                                 <td>{{ $item->user->name }}</td>
-                                <td>{{ $item->status->name }}
+                                <td>{{ $item->status->name }}</td>
+                                <td>
+                                    {{ $item->borrow_date != null ? \Carbon\Carbon::parse($item->borrow_date)->format('d M Y') : '-' }}
                                 </td>
                                 <td>
-                                    {{ $item->borrow_date != null ? Carbon\carbon::parse($item->borrow_date)->format('d M Y') : '-' }}
+                                    {{ $item->return_date != null ? \Carbon\Carbon::parse($item->return_date)->format('d M Y') : '-' }}
                                 </td>
-                                <td>
-                                    {{ $item->return_date != null ? Carbon\carbon::parse($item->return_date)->format('d M Y') : '-' }}
+                                <td>{{ $item->return_date < now() ? Carbon\carbon::parse($item->return_date)->diffInDays(now()) : '0' }}
+                                    Hari
                                 </td>
-                                <form action="" method="post">
+                                <form action="{{ route('transactions.action', $item->id) }}" method="post">
                                     <td>
-                                        <div>
-                                            <select class="form-select" name="book_id" id="book_id">
-                                                <option selected disabled>Select one</option>
-                                                @foreach ($statuses as $status)
-                                                    <option class="text-truncate" value="{{ $status->id }}">
-                                                        {{ $status->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        @csrf
+                                        @method('PUT')
+                                        @livewire('status', ['statusId' => $item->id])
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" name="ini denda" />
+                                        <button type="submit" class="btn btn-primary">
+                                            Submit
+                                        </button>
                                     </td>
                                 </form>
                             </tr>
@@ -107,6 +63,7 @@
             </div>
         </div>
     </div>
+
 
     {{-- <div class="card">
         <div class="card-header">

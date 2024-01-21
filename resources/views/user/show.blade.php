@@ -102,7 +102,9 @@
                                 <tr>
                                     <td>{{ ++$no }}.</td>
                                     <td>{{ $item->user->name ?? '-' }}</td>
-                                    <td><span class="badge bg-primary">{{ $item->status }}</span></td>
+                                    <td>
+                                        {{ $item->status->name }}
+                                    </td>
                                     <td>{{ $item->borrow_date ?? '-' }}</td>
                                     <td>{{ $item->return_date ?? '-' }}</td>
                                     <td>

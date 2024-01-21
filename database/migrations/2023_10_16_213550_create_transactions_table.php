@@ -21,6 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('status_id')->constrained()->onDelete('cascade');
+            $table->string('penalty')->nullable();
             // $table->enum('status', ['Menunggu', 'Berjalan', 'Terlambat', 'Selesai', 'Tolak']);
             $table->timestamps();
         });

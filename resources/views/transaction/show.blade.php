@@ -93,7 +93,7 @@
                                 <td>{{ $transaction->borrow_date }}</td>
                                 <td>{{ $transaction->return_date }}</td>
                                 <td>{{ $transaction->book->title }}</td>
-                                <td><span class="badge bg-label-secondary">{{ $transaction->status }}</span></td>
+                                <td><span class="badge">{{ $transaction->status->name }}</span></td>
                             </tr>
                         </tbody>
                     </table>

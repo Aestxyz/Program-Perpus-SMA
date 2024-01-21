@@ -15,17 +15,20 @@ use Illuminate\Support\Str;
 
 class TransactionController extends Controller
 {
-    public function index()
+    public function borrow()
     {
-        $transactions = Transaction::latest()
+        $transactions = Transaction::where('status_id', 1)
+            ->orWhere('status_id', 2)->latest()
             ->get();
         $borrow_date = Carbon::now()->format('Y-m-d');
         $return_date = Carbon::now()->addDays(7)->format('Y-m-d');
-        $users = User::where('role', 'anggota')->select('id', 'name')->get();
+        $users = User::where('role', 'anggota')
+            ->whereNotNull('email_verified_at')
+            ->select('id', 'name')->get();
         $books = Book::get();
         $statuses = Status::get();
 
-        return view('transaction.index', [
+        return view('transaction.borrow', [
             'borrow_date' => $borrow_date,
             'return_date' => $return_date,
             'users' => $users,
@@ -34,19 +37,30 @@ class TransactionController extends Controller
             'statuses' => $statuses
         ]);
     }
+    public function return()
+    {
+        $transactions = Transaction::where('status_id', '!=', 1)
+            ->orWhere('status_id',  '!=', 2)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        return view('transaction.return', [
+            'transactions' => $transactions,
+        ]);
+    }
     public function store(TransactionRequest $request)
     {
         $validate = $request->validated();
 
         $transaction = Transaction::where('user_id', $request->user_id)
-        ->where(function ($query) {
-            $query->where('status_id', 2)
-                ->orWhere('status_id', 3);
-        })->orWhere(function ($query) {
-            $query->where('status_id', 2)
-                ->Where('status_id', 3);
-        })
-        ->count();
+            ->where(function ($query) {
+                $query->where('status_id', 2)
+                    ->orWhere('status_id', 3);
+            })->orWhere(function ($query) {
+                $query->where('status_id', 2)
+                    ->Where('status_id', 3);
+            })
+            ->count();
 
         if ($transaction >= 3) {
             return back()->with('warning', 'Peminjaman melebihi batas yang telah ditentukan 😀');
@@ -68,16 +82,20 @@ class TransactionController extends Controller
     public function show($id)
     {
         $transaction = Transaction::findOrFail($id);
-        $users = User::where('role', 'anggota')->select('id', 'name')->get();
+        $statuses = Status::get();
+        $users = User::where('role', 'anggota')
+            ->whereNotNull('email_verified_at')
+            ->select('id', 'name')->get();
         $books = Book::get();
 
         return view(
             'transaction.show',
-            compact('transaction', 'users', 'books')
+            compact('transaction', 'users', 'books', 'statuses')
         );
     }
     public function update(TransactionRequest $request, $id)
     {
+        // dd($request->all());
         $validate = $request->validated();
         $transaction = Transaction::findOrFail($id);
         $findbook = Book::findOrFail($transaction->book->id);

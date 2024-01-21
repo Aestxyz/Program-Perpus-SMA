@@ -18,7 +18,10 @@ class Book extends Model
         'year_published',
         'publisher',
         'synopsis',
-        'book_count'
+        'book_count',
+        'bookshelf',
+        'source',
+        'price'
     ];
     public function category()
     {

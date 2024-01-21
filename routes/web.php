@@ -8,6 +8,7 @@ use App\Http\Controllers\ConfirmationAccountController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PenaltyController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Models\Book;
@@ -33,15 +34,12 @@ Route::get('/', function () {
         'transaction' => Transaction::count(),
         'user' => User::whereNotNull('email_verified_at')->count(),
     ]);
-
 });
 
 Auth::routes();
 
 Route::get('/catalog-books', [CatalogController::class, 'index'])->name('catalog.index');
 Route::get('/catalog-books/{id}/show', [CatalogController::class, 'show'])->name('catalog.show');
-
-
 
 Route::middleware(['auth', 'role:Petugas,Kepala'])->group(function () {
 
@@ -83,11 +81,14 @@ Route::middleware(['auth', 'role:Petugas,Kepala'])->group(function () {
     });
 
     Route::prefix('transactions')->group(function () {
-        Route::get('/', [TransactionController::class, 'index'])->name('transactions.index');
+        Route::get('/borrow', [TransactionController::class, 'borrow'])->name('transactions.borrow');
+        Route::get('/return', [TransactionController::class, 'return'])->name('transactions.return');
         Route::post('/', [TransactionController::class, 'store'])->name('transactions.store');
         Route::get('/{id}/show', [TransactionController::class, 'show'])->name('transactions.show');
         Route::put('/{id}', [TransactionController::class, 'update'])->name('transactions.update');
         Route::delete('/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+
+        Route::put('/{id}/action', [StatusController::class, 'action'])->name('transactions.action');
 
         Route::put('/{id}/confirmation', [TransactionController::class, 'confirmation'])->name('transactions.confirmation');
         Route::put('/{id}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
@@ -104,11 +105,14 @@ Route::middleware(['auth', 'role:Petugas,Kepala'])->group(function () {
         Route::delete('/{id}', [PenaltyController::class, 'destroy'])->name('penalties.destroy');
     });
 
-    Route::get('/reports/transactions', [ReportController::class, 'transactions'])->name('reports.transactions');
-    Route::get('/reports/members', [ReportController::class, 'members'])->name('reports.members');
-    Route::get('/reports/officers', [ReportController::class, 'officers'])->name('reports.officers');
-    Route::get('/reports/penalties', [ReportController::class, 'penalties'])->name('reports.penalties');
-    Route::get('/reports/books', [ReportController::class, 'books'])->name('reports.books');
+    Route::prefix('reports')->group(function () {
+        Route::get('/borrow', [ReportController::class, 'borrow'])->name('reports.borrow');
+        Route::get('/return', [ReportController::class, 'return'])->name('reports.return');
+        Route::get('/members', [ReportController::class, 'members'])->name('reports.members');
+        Route::get('/officers', [ReportController::class, 'officers'])->name('reports.officers');
+        Route::get('/penalties', [ReportController::class, 'penalties'])->name('reports.penalties');
+        Route::get('/books', [ReportController::class, 'books'])->name('reports.books');
+    });
 });
 
 Route::middleware(['auth', 'role:Anggota'])->group(function () {

@@ -24,6 +24,9 @@ class CreateBooksTable extends Migration
             $table->string('publisher');
             $table->longText('synopsis');
             $table->integer('book_count');
+            $table->string('bookshelf')->nullable();
+            $table->string('source')->nullable();
+            $table->string('price')->nullable();
             $table->timestamps();
         });
     }

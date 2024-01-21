@@ -22,7 +22,8 @@ class Transaction extends Model
         'user_id',
         'borrow_date',
         'return_date',
-        'status_id'
+        'status_id',
+        'penalty',
     ];
 
     /**

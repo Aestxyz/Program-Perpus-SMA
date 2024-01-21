@@ -103,6 +103,41 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="mb-3">
+                                <label for="author" class="form-label">Rak Buku</label>
+                                <input type="text" class="form-control" name="bookshelf" id="bookshelf"
+                                    value="{{ old('bookshelf') }}" aria-describedby="helpId"
+                                    placeholder="Enter book bookshelf">
+                                @error('bookshelf')
+                                    <small class="text-danger fw-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Harga Buku</label>
+                                <input type="number" class="form-control" name="price" id="price"
+                                    value="{{ old('price') }}" aria-describedby="helpId"
+                                    placeholder="Enter book year published">
+                                @error('price')
+                                    <small class="text-danger fw-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="mb-3">
+                                <label for="source" class="form-label">Sumber Buku</label>
+                                <input type="text" class="form-control" name="source" id="source"
+                                    value="{{ old('source') }}" aria-describedby="helpId"
+                                    placeholder="Enter book source">
+                                @error('source')
+                                    <small class="text-danger fw-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="synopsis" class="form-label">Sinopsis</label>
                         <textarea class="form-control" name="synopsis" id="synopsis" rows="3">{{ old('synopsis') }}</textarea>

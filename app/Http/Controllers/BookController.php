@@ -15,8 +15,8 @@ class BookController extends Controller
         return view('book.index', [
             'books' => Book::latest()->get(),
             'categories' => Category::get(),
-            'transactions' => Transaction::where('status', 'Berjalan')
-                ->orWhere('status', 'Terlambat')
+            'transactions' => Transaction::where('status_id', 2)
+                ->orWhere('status_id', 3)
                 ->get()
         ]);
     }
@@ -64,6 +64,6 @@ class BookController extends Controller
 
         Storage::delete($book->image);
 
-        return back()->with('success', 'Proses penghapusan data telah berhasil dilakukan.');
+        return redirect('/books')->with('success', 'Proses penghapusan data telah berhasil dilakukan.');
     }
 }

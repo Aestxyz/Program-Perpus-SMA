@@ -60,25 +60,25 @@
             </a>
         </li>
 
-        <li class="menu-item {{ request()->is('transactions') ? 'active' : '' }}">
-            <a href="/transactions" class="menu-link text-body">
+        <li class="menu-item {{ request()->is('transactions/borrow') ? 'active' : '' }}">
+            <a href="/transactions/borrow" class="menu-link text-body">
                 <i class="menu-icon tf-icons mdi mdi-sync-circle"></i>
-                <div data-i18n="transactions">Transaksi Perpustakaan</div>
-                <div class="badge bg-danger rounded-pill ms-auto {{ $late_days == null ? 'd-none' : '' }}">
-                    {{ $late_days }}
-                </div>
-                <div class="badge bg-info rounded-pill ms-auto {{ $confirmed == null ? 'd-none' : '' }}">
-                    {{ $confirmed }}
-                </div>
+                <div data-i18n="transactions">Peminjaman</div>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->is('transactions/return') ? 'active' : '' }}">
+            <a href="/transactions/return" class="menu-link text-body">
+                <i class="menu-icon tf-icons mdi mdi-sync-circle"></i>
+                <div data-i18n="transactions">Pengembalian</div>
             </a>
         </li>
 
-        <li class="menu-item {{ request()->is('penalties') ? 'active' : '' }}">
+        {{-- <li class="menu-item {{ request()->is('penalties') ? 'active' : '' }}">
             <a href="/penalties" class="menu-link text-body">
                 <i class="menu-icon tf-icons mdi mdi-cash"></i>
                 <div data-i18n="penalties">Denda</div>
             </a>
-        </li>
+        </li> --}}
         <li
             class="menu-item {{ request()->is(['/reports/books', '/reports/users', '/reports/transactions', '/reports/penalties']) ? 'active' : '' }}">
             <a href="" class="menu-link text-body menu-toggle">
@@ -97,8 +97,13 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('reports.transactions') }}" class="menu-link text-body">
-                        <div data-i18n="reports-transactions">Laporan Transaksi</div>
+                    <a href="{{ route('reports.borrow') }}" class="menu-link text-body">
+                        <div data-i18n="reports-borrow">Laporan Peminjaman</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('reports.return') }}" class="menu-link text-body">
+                        <div data-i18n="reports-return">Laporan Pengembalian</div>
                     </a>
                 </li>
                 <li class="menu-item">

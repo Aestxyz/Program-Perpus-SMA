@@ -17,11 +17,11 @@ class StatusSeeder extends Seeder
         $statuses = [
             [
                 'name' => 'Menunggu Konfirmasi', // 1
-                'amount' => null,
+                'amount' => 0,
             ],
             [
                 'name' => 'Konfirmasi (Berjalan)', // 2
-                'amount' => null,
+                'amount' => 0,
             ],
             [
                 'name' => 'Terlambat', // 3
@@ -29,7 +29,7 @@ class StatusSeeder extends Seeder
             ],
             [
                 'name' => 'Dikembalikan', // 4
-                'amount' => null,
+                'amount' => 0,
             ],
             [
                 'name' => 'Hilang', // 5
@@ -45,7 +45,7 @@ class StatusSeeder extends Seeder
             ],
             [
                 'name' => 'Tolak', // 8
-                'amount' => null,
+                'amount' => 0,
             ],
 
         ];
