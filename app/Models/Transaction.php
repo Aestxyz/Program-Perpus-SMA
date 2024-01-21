@@ -22,7 +22,7 @@ class Transaction extends Model
         'user_id',
         'borrow_date',
         'return_date',
-        'status'
+        'status_id'
     ];
 
     /**
@@ -53,5 +53,15 @@ class Transaction extends Model
     public function penalties(): HasMany
     {
         return $this->hasMany(Penalty::class);
+    }
+
+    /**
+     * Get the status that owns the Transaction
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(status::class);
     }
 }

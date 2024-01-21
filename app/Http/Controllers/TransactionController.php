@@ -6,6 +6,7 @@ use App\Http\Requests\PenaltyRequest;
 use App\Http\Requests\TransactionRequest;
 use App\Models\Book;
 use App\Models\Penalty;
+use App\Models\Status;
 use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
@@ -16,35 +17,21 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $waiting = Transaction::where('status', 'Menunggu')
-            ->orderBy('updated_at', 'DESC')
-            ->get();
-        $walking = Transaction::where('status', 'Berjalan')
-            ->orderBy('updated_at', 'DESC')
-            ->get();
-        $penalty = Transaction::where('status', 'Terlambat')
-            ->orderBy('updated_at', 'DESC')
-            ->get();
-        $finished = Transaction::where('status', 'Selesai')
-            ->orderBy('updated_at', 'DESC')
-            ->get();
-        $transactions = Transaction::orderBy('status', 'ASC')
+        $transactions = Transaction::latest()
             ->get();
         $borrow_date = Carbon::now()->format('Y-m-d');
         $return_date = Carbon::now()->addDays(7)->format('Y-m-d');
         $users = User::where('role', 'anggota')->select('id', 'name')->get();
         $books = Book::get();
+        $statuses = Status::get();
 
         return view('transaction.index', [
-            'waiting' => $waiting,
-            'walking' => $walking,
-            'penalty' => $penalty,
-            'finished' => $finished,
             'borrow_date' => $borrow_date,
             'return_date' => $return_date,
             'users' => $users,
             'books' => $books,
             'transactions' => $transactions,
+            'statuses' => $statuses
         ]);
     }
     public function store(TransactionRequest $request)
@@ -52,14 +39,14 @@ class TransactionController extends Controller
         $validate = $request->validated();
 
         $transaction = Transaction::where('user_id', $request->user_id)
-            ->where(function ($query) {
-                $query->where('status', 'Berjalan')
-                    ->orWhere('status', 'Terlambat');
-            })->orWhere(function ($query) {
-                $query->where('status', 'Berjalan')
-                    ->Where('status', 'Terlambat');
-            })
-            ->count();
+        ->where(function ($query) {
+            $query->where('status_id', 2)
+                ->orWhere('status_id', 3);
+        })->orWhere(function ($query) {
+            $query->where('status_id', 2)
+                ->Where('status_id', 3);
+        })
+        ->count();
 
         if ($transaction >= 3) {
             return back()->with('warning', 'Peminjaman melebihi batas yang telah ditentukan 😀');
@@ -68,9 +55,9 @@ class TransactionController extends Controller
             $book->book_count -= 1;
             $book->save();
 
-            $user = User::findOrFail($request->user_id);
+            $validate['code'] = Str::random(10);
+            $validate['status_id'] = 2;
 
-            $validate['code'] = $user->slug . '-' . Str::random(10);
 
             Transaction::create($validate);
 

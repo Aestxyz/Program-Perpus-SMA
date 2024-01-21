@@ -33,6 +33,7 @@ Route::get('/', function () {
         'transaction' => Transaction::count(),
         'user' => User::whereNotNull('email_verified_at')->count(),
     ]);
+
 });
 
 Auth::routes();

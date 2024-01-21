@@ -38,11 +38,11 @@ class CatalogController extends Controller
 
         $transaction = Transaction::where('user_id', $request->user_id)
             ->where(function ($query) {
-                $query->where('status', 'Berjalan')
-                    ->orWhere('status', 'Terlambat');
+                $query->where('status_id', 2)
+                    ->orWhere('status_id', 3);
             })->orWhere(function ($query) {
-                $query->where('status', 'Berjalan')
-                    ->Where('status', 'Terlambat');
+                $query->where('status_id', 2)
+                    ->Where('status_id', 3);
             })
             ->count();
 
@@ -53,10 +53,8 @@ class CatalogController extends Controller
             $book = Book::findOrFail($request->book_id);
             $book->book_count -= 1;
             $book->save();
-
-            $user = User::findOrFail($request->user_id);
-
-            $validate['code'] = $user->slug . '-' . Str::random(10);
+            $validate['code'] = Str::random(10);
+            $validate['status_id'] = 1;
 
             $transaction = Transaction::create($validate);
 
@@ -79,28 +77,10 @@ class CatalogController extends Controller
 
     public function history()
     {
-        $waiting = Transaction::where('user_id', Auth()->user()->id)
-            ->where('status', 'Menunggu')
-            ->get();
-        $walking = Transaction::where('user_id', Auth()->user()->id)
-            ->where('status', 'Berjalan')
-            ->get();
-        $penalty = Transaction::where('user_id', Auth()->user()->id)
-            ->where('status', 'Terlambat')
-            ->get();
-        $finished = Transaction::where('user_id', Auth()->user()->id)
-            ->where('status', 'Selesai')
-            ->get();
-        $rejects = Transaction::where('user_id', Auth()->user()->id)
-            ->where('status', 'Tolak')
-            ->get();
+        $transactions = Transaction::get();
 
         return view('history.index', [
-            'waiting' => $waiting,
-            'walking' => $walking,
-            'penalty' => $penalty,
-            'finished' => $finished,
-            'rejects' => $rejects
+            'transactions' => $transactions,
         ]);
     }
 }

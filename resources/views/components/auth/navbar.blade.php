@@ -67,6 +67,9 @@
                 <div class="badge bg-danger rounded-pill ms-auto {{ $late_days == null ? 'd-none' : '' }}">
                     {{ $late_days }}
                 </div>
+                <div class="badge bg-info rounded-pill ms-auto {{ $confirmed == null ? 'd-none' : '' }}">
+                    {{ $confirmed }}
+                </div>
             </a>
         </li>
 

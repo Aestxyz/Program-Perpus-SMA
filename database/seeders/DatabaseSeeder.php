@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             APISeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            StatusSeeder::class
         ]);
 
-        Transaction::factory(10)->create();
+        // Transaction::factory(10)->create();
 
     }
 }

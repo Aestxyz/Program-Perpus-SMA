@@ -23,18 +23,18 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             DB::table('transactions')
-                ->where('status', 'Berjalan')
+                ->where('status_id', 2)
                 ->whereDate('return_date', '<', Carbon::today())
-                ->update(['status' => 'Terlambat']);
+                ->update(['status_id' => 3]);
         })->everyMinute(); // ubah ke ->everyMinute(); untuk melakukan test
 
         // Menghapus data transaksi berstatus "Batal" setiap tahunnya ->yearly();
 
         $schedule->call(function () {
             DB::table('transactions')
-                ->where('status', 'Tolak')
+                ->where('status_id', 8)
                 ->delete();
-        })->everyMinute(); // ubah ke ->everyMinute(); untuk melakukan test
+        })->everyTwoHours(); // ubah ke ->everyMinute(); untuk melakukan test
     }
 
     /**

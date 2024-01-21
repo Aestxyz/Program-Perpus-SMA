@@ -22,7 +22,7 @@
                     <div class="d-flex align-items-center">
                         <div class="ms-3">
                             <div class="small mb-1">Menunggu</div>
-                            <h5 class="mb-0">{{ $waiting->count() }}</h5>
+                            <h5 class="mb-0">{{ $transactions->count() }}</h5>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="d-flex align-items-center">
                         <div class="ms-3">
                             <div class="small mb-1">Berjalan</div>
-                            <h5 class="mb-0">{{ $walking->count() }}</h5>
+                            <h5 class="mb-0">{{ $transactions->count() }}</h5>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="d-flex align-items-center">
                         <div class="ms-3">
                             <div class="small mb-1">Terlambat</div>
-                            <h5 class="mb-0">{{ $penalty->count() }}</h5>
+                            <h5 class="mb-0">{{ $transactions->count() }}</h5>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                     <div class="d-flex align-items-center">
                         <div class="ms-3">
                             <div class="small mb-1">Selesai</div>
-                            <h5 class="mb-0">{{ $finished->count() }}</h5>
+                            <h5 class="mb-0">{{ $transactions->count() }}</h5>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,51 @@
 
     <div class="card">
         <div class="card-body">
-            @include('transaction.table.index')
+            <div class="table-responsive">
+                <table id="example" class="display table nowrap text-center" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>nama lengkap</th>
+                            <th>status</th>
+                            <th>Tanggal Pinjam</th>
+                            <th>Tanggal Kembali</th>
+                            <th>#</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($transactions as $item)
+                            <tr>
+                                <td>{{ $item->user->name }}</td>
+                                <td>{{ $item->status->name }}
+                                </td>
+                                <td>
+                                    {{ $item->borrow_date != null ? Carbon\carbon::parse($item->borrow_date)->format('d M Y') : '-' }}
+                                </td>
+                                <td>
+                                    {{ $item->return_date != null ? Carbon\carbon::parse($item->return_date)->format('d M Y') : '-' }}
+                                </td>
+                                <form action="" method="post">
+                                    <td>
+                                        <div>
+                                            <select class="form-select" name="book_id" id="book_id">
+                                                <option selected disabled>Select one</option>
+                                                @foreach ($statuses as $status)
+                                                    <option class="text-truncate" value="{{ $status->id }}">
+                                                        {{ $status->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="ini denda" />
+                                    </td>
+                                </form>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
