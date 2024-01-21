@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class ReportController extends Controller
     public function books()
     {
         return view('report.books', [
-            'transactions' => Transaction::whereNotIn('status_id', [1, 2, 8])->latest()->get(),
+            'books' => Book::latest()->get(),
         ]);
     }
 

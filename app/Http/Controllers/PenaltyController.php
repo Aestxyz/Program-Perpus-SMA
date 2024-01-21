@@ -14,7 +14,7 @@ class PenaltyController extends Controller
     public function create($id)
     {
         $transaction = Transaction::find($id);
-        return view('penalty.create', compact('transaction',));
+        return view('penalty.create', compact('transaction'));
     }
 
     public function store(PenaltyRequest $request)
@@ -28,6 +28,16 @@ class PenaltyController extends Controller
             'status' => 'Lunas'
         ]);
 
-        return redirect()->route('transactions.return');
+        if (Auth()->user()->role == 'Anggota') {
+            return back();
+        } else {
+            return redirect()->route('transactions.return');
+        }
+    }
+
+    public function show($id)
+    {
+        $transaction = Transaction::find($id);
+        return view('history.show', compact('transaction'));
     }
 }

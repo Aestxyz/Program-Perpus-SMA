@@ -1,28 +1,35 @@
 <x-auth.layout>
     <x-slot name="title">Laporan Buku Perpustakaan</x-slot>
+    @include('layouts.report')
+
     <div class="card">
         <div class="card-body table-responsive">
-            <table id="example" class="display" style="width:100%">
+            <table id="example" class="display table nowrap" style="width:100%">
                 <thead>
                     <tr>
-                        <th>NO</th>
-                        <th>Nama</th>
-                        <th>Buku</th>
-                        <th>Tanggal Pinjam</th>
-                        <th>Tanggal Kembali</th>
-                        <th>Status</th>
+                        <th>No.</th>
+                        <th>judul</th>
+                        <th>kategori buku</th>
+                        <th>isbn</th>
+                        <th>Penulis</th>
+                        <th>tahun terbit</th>
+                        <th>penerbit</th>
+                        <th>jumlah buku</th>
+                        <th>Sumber</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($transactions as $no => $item)
+                    @foreach ($books as $no => $book)
                         <tr>
-                            <td>{{ ++$no }}</td>
-                            <td>{{ $item->user->name }}</td>
-                            <td>{{ $item->book->title }}</td>
-                            <td>{{ Carbon\carbon::parse($item->borrow_date)->format('d M Y') }}</td>
-                            <td>{{ Carbon\carbon::parse($item->return_date)->format('d M Y') }}</td>
-                            <td>{{ $item->return_date < now() && $item->status == 'Berjalan' ? 'Terlambat' : $item->status }}
-                            </td>
+                            <td>{{ ++$no }}.</td>
+                            <td>{{ $book->title }}</td>
+                            <td><span class="badge bg-primary">{{ $book->category->name }}</span></td>
+                            <td>{{ $book->isbn }}</td>
+                            <td>{{ $book->author }}</td>
+                            <td>{{ $book->year_published }}</td>
+                            <td>{{ $book->publisher }}</td>
+                            <td>{{ $book->book_count }}</td>
+                            <td>{{ $book->source }}</td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -11,7 +11,7 @@
                             <th>Name</th>
                             <th>Jumlah Denda</th>
                             <th>Keterangan</th>
-                            <th>#</th>
+                            <th>Status Denda</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -19,10 +19,14 @@
                             <tr>
                                 <td>{{ ++$no }}.</td>
                                 <td>{{ $item->user->name }}</td>
-                                <td>Rp. {{ $item->penalty }}</td>
+                                <td>Rp. {{ $item->penalty_total }}</td>
                                 <td>{{ $item->status->name }}</td>
                                 <td>
-                                  #
+                                    @if ($item->penalties->first())
+                                        {{ $item->penalties->first()->status }}
+                                    @else
+                                        Belum dibayar
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

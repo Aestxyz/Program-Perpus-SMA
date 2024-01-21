@@ -15,6 +15,7 @@
                             <th>Tanggal Kembali</th>
                             <th>Status</th>
                             <th>Total Denda</th>
+                            <th>Status Denda</th>
                             <th>#</th>
                         </tr>
                     </thead>
@@ -24,8 +25,21 @@
                                 <td>{{ $item->borrow_date ?? '-' }}</td>
                                 <td>{{ $item->return_date ?? '-' }}</td>
                                 <td>{{ $item->status->name }}</td>
-                                <td>{{ $item->amount ?? '-' }}</td>
-                                <td>#</td>
+                                <td>Rp. {{ $item->penalty_total ?? '-' }}</td>
+                                <td>
+                                    @if ($item->penalties->first())
+                                        {{ $item->penalties->first()->status }}
+                                    @elseif ($item->return_date == null)
+                                        -
+                                    @else
+                                        Belum dibayar
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('penalties.show', $item->id) }}" class="btn btn-primary">
+                                        Lihat
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

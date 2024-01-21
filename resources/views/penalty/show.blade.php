@@ -16,14 +16,12 @@
                                 <tr>
                                     <th>Tanggal Peminjaman</th>
                                     <th>Tanggal Kembali</th>
-                                    <th>Tanggal Lewat</th>
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 <tr>
                                     <td>{{ $transaction->borrow_date }}</td>
                                     <td>{{ $transaction->return_date }}</td>
-                                    <td>{{ $lates_day }} Hari Berlalu</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -38,7 +38,7 @@ class StatusController extends Controller
                 'penalty_total' => $request->penalty ?? 0,
 
             ]);
-            return redirect()->route('penalties.create', $transaction->id);
+            return redirect()->route('transactions.return');
         } elseif ($request->status_id == 5) {
             # Hilang...
             $transaction->update([
@@ -71,7 +71,7 @@ class StatusController extends Controller
                 'borrow_date' => null,
                 'return_date' => null,
             ]);
-            return redirect()->route('penalties.create', $transaction->id);
+            return redirect()->route('transactions.return');
         }
     }
 }

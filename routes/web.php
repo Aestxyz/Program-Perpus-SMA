@@ -96,11 +96,6 @@ Route::middleware(['auth', 'role:Petugas,Kepala'])->group(function () {
         Route::put('/{id}/extratime', [TransactionController::class, 'extratime'])->name('transactions.extratime');
     });
 
-    Route::prefix('penalties')->group(function () {
-        Route::get('/{id}/transactions', [PenaltyController::class, 'create'])->name('penalties.create');
-        Route::post('/', [PenaltyController::class, 'store'])->name('penalties.store');
-    });
-
     Route::prefix('reports')->group(function () {
         Route::get('/borrow', [ReportController::class, 'borrow'])->name('reports.borrow');
         Route::get('/return', [ReportController::class, 'return'])->name('reports.return');
@@ -117,4 +112,11 @@ Route::middleware(['auth', 'role:Anggota'])->group(function () {
         Route::get('/{id}/process', [CatalogController::class, 'process'])->name('catalog.process');
         Route::get('/history', [CatalogController::class, 'history'])->name('catalog.history');
     });
+
+});
+
+Route::prefix('penalties')->group(function () {
+    Route::get('/{id}/transactions', [PenaltyController::class, 'create'])->name('penalties.create');
+    Route::post('/', [PenaltyController::class, 'store'])->name('penalties.store');
+    Route::get('/{id}/show', [PenaltyController::class, 'show'])->name('penalties.show');
 });
