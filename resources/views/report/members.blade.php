@@ -8,7 +8,7 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>identify</th>
+                        <th>NIS</th>
                         <th>name</th>
                         <th>email</th>
                         <th>telp</th>

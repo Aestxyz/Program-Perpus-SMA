@@ -12,7 +12,7 @@
                         <th>Buku</th>
                         <th>Tanggal Pinjam</th>
                         <th>Tanggal Kembali</th>
-                        <th>Status</th>
+                        <th>Status Transaksi</th>
                     </tr>
                 </thead>
                 <tbody>

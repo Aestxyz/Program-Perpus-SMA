@@ -17,6 +17,8 @@
                         <th>penerbit</th>
                         <th>jumlah buku</th>
                         <th>Sumber</th>
+                        <th>Rak Buku</th>
+                        <th>Harga Buku</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,13 +26,15 @@
                         <tr>
                             <td>{{ ++$no }}.</td>
                             <td>{{ $book->title }}</td>
-                            <td><span class="badge bg-primary">{{ $book->category->name }}</span></td>
+                            <td>{{ $book->category->name }}</td>
                             <td>{{ $book->isbn }}</td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->year_published }}</td>
                             <td>{{ $book->publisher }}</td>
                             <td>{{ $book->book_count }}</td>
                             <td>{{ $book->source }}</td>
+                            <td>{{ $book->bookshelf }}</td>
+                            <td>Rp. {{ $book->price }}</td>
                         </tr>
                     @endforeach
                 </tbody>
