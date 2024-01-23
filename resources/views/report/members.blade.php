@@ -2,6 +2,7 @@
     <x-slot name="title">Laporan Anggota</x-slot>
     @include('layouts.report')
     <div class="card">
+        <h4 class="card-header fw-bold">Laporan Anggota Perpustakaan</h4>
         <div class="card-body table-responsive">
             <table id="example" class="display table nowrap" style="width:100%">
                 <thead>
@@ -12,8 +13,8 @@
                         <th>email</th>
                         <th>telp</th>
                         <th>role</th>
-                        <th>birthdate</th>
-                        <th>gender</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Jenis Kelamin</th>
                     </tr>
                 </thead>
                 <tbody>

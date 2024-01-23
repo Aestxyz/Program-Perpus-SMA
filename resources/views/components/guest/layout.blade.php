@@ -136,8 +136,8 @@
         <div class="">
             <!-- Copyright -->
             <div class="text-center p-3">
-                © 2023 Copyright:
-                <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                © 2024 Copyright:
+                <a class="text-dark" href="#">SMA 11 Kota Jambi</a>
             </div>
             <!-- Copyright -->
     </footer>

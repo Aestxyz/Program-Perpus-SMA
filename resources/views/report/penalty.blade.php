@@ -2,6 +2,7 @@
     <x-slot name="title">Laporan Denda</x-slot>
     @include('layouts.report')
     <div class="card">
+        <h4 class="card-header fw-bold">Laporan Denda</h4>
         <div class="card-body">
             <div class="table-responsive">
                 <table id="example" class="display table nowrap" style="width:100%">

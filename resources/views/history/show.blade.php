@@ -25,12 +25,18 @@
                                     </thead>
                                     <tbody class="table-border-bottom-0">
                                         <tr>
-                                            <td>{{ $transaction->borrow_date }}</td>
-                                            <td>{{ $transaction->return_date }}</td>
+                                            <td>{{ $transaction->borrow_date ?? '-' }}</td>
+                                            <td>{{ $transaction->return_date ?? '-' }}</td>
                                             <td>{{ $transaction->status->name }}</td>
-                                            <td>Rp. {{ $transaction->status->amount }}</td>
+                                            <td>Rp. {{ $transaction->penalty_total }}</td>
                                             <td>
-                                                {{ $transaction->penalties->first() ? $transaction->penalties->first()->status : 'Belum Bayar' }}
+                                                @if ($transaction->penalties->first())
+                                                    {{ $transaction->penalties->first()->status }}
+                                                @elseif (!$transaction->penalties->first() && $transaction->penalty_total > 0)
+                                                    Belum Dibayar
+                                                @elseif ($transaction->penalty_total == 0)
+                                                    -
+                                                @endif
                                             </td>
                                         </tr>
                                     </tbody>
@@ -93,8 +99,6 @@
                     <div class="card mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h6 class="card-title m-0">Detail Buku</h6>
-                            <h6 class="m-0"><a href="{{ route('books.show', $transaction->book->id) }}">Lihat</a>
-                            </h6>
                         </div>
                         <div class="card-body">
                             <div class="d-flex justify-content-start align-items-center mb-4">

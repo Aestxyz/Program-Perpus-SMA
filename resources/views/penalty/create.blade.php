@@ -16,7 +16,7 @@
                                 <tr>
                                     <th>Tanggal Peminjaman</th>
                                     <th>Tanggal Kembali</th>
-                                    <th>Status</th>
+                                    <th>Status Transaksi</th>
                                     <th>Denda</th>
                                 </tr>
                             </thead>

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="card-body">
-                    <h4 class="card-title display-6 mb-4 text-truncate lh-sm">Hello {{ Auth()->user()->name }}!🎉</h4>
+                    <h4 class="card-title display-6 mb-4 text-truncate lh-sm">Halo {{ Auth()->user()->name }}!🎉</h4>
                     <p class="mb-0">Semoga kamu dapat menyelesaikan setiap tugas yang ada di hadapanmu dengan baik,
                         menjalankannya dengan penuh semangat dan dedikasi, serta meraih hasil yang memuaskan.
                     </p>

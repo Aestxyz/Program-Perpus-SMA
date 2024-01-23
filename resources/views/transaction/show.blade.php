@@ -29,7 +29,7 @@
                                 <th scope="col">Tgl. Pinjam</th>
                                 <th scope="col">Tgl. Kembali</th>
                                 <th scope="col">Buku</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Status Transaksi</th>
                                 <th scope="col">Total Denda</th>
                                 <th scope="col">Status Denda</th>
                                 @if ($transaction->status_id == '3')
@@ -42,13 +42,14 @@
                                 <td>{{ $transaction->borrow_date }}</td>
                                 <td>{{ $transaction->return_date }}</td>
                                 <td>{{ $transaction->book->title }}</td>
-                                <td><span class="badge">{{ $transaction->status->name }}</span></td>
-                                <td>{{ $transaction->penalty_total }}</td>
+                                <td>
+                                    {{ $transaction->status->name }}</td>
+                                <td>Rp. {{ $transaction->penalty_total ?? '0' }}</td>
                                 <td>
                                     @if ($transaction->penalties->first())
                                         {{ $transaction->penalties->first()->status }}
                                     @elseif (!$transaction->penalties->first() && $transaction->penalty_total > 0)
-                                        Belum Bayar
+                                        Belum Dibayar
                                     @elseif ($transaction->penalty_total == 0)
                                         -
                                     @endif
@@ -116,8 +117,7 @@
                     "
                             class="img-fluid rounded-top" alt="" />
                     @elseif (!$transaction->penalties->first() && $transaction->penalty_total > 0)
-                        <div class="card bg-secondary" style="height: 250px">
-                        </div>
+                        Belum Dibayar
                     @elseif ($transaction->penalty_total == 0)
                         Tidak dibutuhkan
                     @endif

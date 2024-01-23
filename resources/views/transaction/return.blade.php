@@ -52,7 +52,7 @@
                                         @if ($item->penalties->first())
                                             {{ $item->penalties->first()->status }}
                                         @elseif (!$item->penalties->first() && $item->penalty_total > 0)
-                                            Belum Bayar
+                                            Belum Dibayar
                                         @elseif ($item->penalty_total == 0)
                                             -
                                         @endif

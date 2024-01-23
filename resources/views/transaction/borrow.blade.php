@@ -16,11 +16,11 @@
                         <tr>
                             <th>#</th>
                             <th>nama lengkap</th>
-                            <th>status</th>
+                            <th>status Transakso</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
                             <th>Jumlah Terlambat (Hari)</th>
-                            <th>Status</th>
+                            <th>Tindakan</th>
                             <th>#</th>
                         </tr>
                     </thead>
@@ -29,8 +29,8 @@
                             <tr>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a class="btn btn-primary btn-sm"
-                                            href="{{ route('transactions.show', $item->id) }}" role="button">Lihat</a>
+                                        <a class="btn btn-primary" href="{{ route('transactions.show', $item->id) }}"
+                                            role="button">Lihat</a>
                                     </div>
                                 </td>
                                 <td>{{ $item->user->name }}</td>
@@ -47,9 +47,11 @@
                                 </td>
                                 <form action="{{ route('transactions.action', $item->id) }}" method="post">
                                     <td>
-                                        @csrf
-                                        @method('PUT')
-                                        @livewire('status', ['statusId' => $item->id])
+                                        <div style="width: 120px">
+                                            @csrf
+                                            @method('PUT')
+                                            @livewire('status', ['statusId' => $item->id])
+                                        </div>
                                     </td>
                                     <td>
                                         <button type="submit" class="btn btn-primary">

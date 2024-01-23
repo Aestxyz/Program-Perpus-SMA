@@ -3,6 +3,7 @@
     @include('layouts.report')
 
     <div class="card">
+        <h4 class="card-header fw-bold">Laporan Buku Perpustakaan</h4>
         <div class="card-body table-responsive">
             <table id="example" class="display table nowrap" style="width:100%">
                 <thead>

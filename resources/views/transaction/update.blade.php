@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
+            <label for="status" class="form-label">Status Transaksi</label>
             @livewire('status')
         </div>
         <div class="text-end">

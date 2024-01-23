@@ -29,10 +29,10 @@
                                 <td>
                                     @if ($item->penalties->first())
                                         {{ $item->penalties->first()->status }}
-                                    @elseif ($item->return_date == null)
+                                    @elseif (!$item->penalties->first() && $item->penalty_total > 0)
+                                        Belum Dibayar
+                                    @elseif ($item->penalty_total == 0)
                                         -
-                                    @else
-                                        Belum dibayar
                                     @endif
                                 </td>
                                 <td>

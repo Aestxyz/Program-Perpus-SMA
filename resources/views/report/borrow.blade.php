@@ -2,6 +2,7 @@
     <x-slot name="title">Laporan Peminjaman Buku</x-slot>
     @include('layouts.report')
     <div class="card">
+        <h4 class="card-header fw-bold">Laporan Peminjaman Buku</h4>
         <div class="card-body table-responsive">
             <table id="example" class="display" style="width:100%">
                 <thead>
