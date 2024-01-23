@@ -22,7 +22,7 @@ class Status extends Component
 
     public function render()
     {
-        $statuses = ModelsStatus::all();
+        $statuses = ModelsStatus::where('id', '!=', 1)->get();
 
         return view('livewire.status', compact('statuses'));
     }
