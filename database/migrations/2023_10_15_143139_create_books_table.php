@@ -27,6 +27,7 @@ class CreateBooksTable extends Migration
             $table->string('bookshelf')->nullable();
             $table->string('source')->nullable();
             $table->string('price')->nullable();
+            $table->enum('type', ['umum', 'paket']);
             $table->timestamps();
         });
     }

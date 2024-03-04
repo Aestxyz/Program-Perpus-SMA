@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
@@ -43,6 +44,7 @@ class APISeeder extends Seeder
                             'book_count' => rand(1, 100),
                             'source' => 'Data BOSS',
                             'bookshelf' => 'Rak 1',
+                            'type' => Arr::random(['umum', 'paket']),
                             'price' => rand(25, 90) . 0000
                         ];
 
@@ -66,6 +68,5 @@ class APISeeder extends Seeder
         }
 
         $this->command->info('Seeder finished.');
-
     }
 }

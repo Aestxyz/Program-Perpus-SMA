@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
         Category::factory(10)->create();
 
         $this->call([
-            APISeeder::class,
             UserSeeder::class,
-            StatusSeeder::class
+            StatusSeeder::class,
+            APISeeder::class,
         ]);
 
         // Transaction::factory(10)->create();

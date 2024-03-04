@@ -16,7 +16,7 @@
     }
 </style>
 
-@if (now() >= Carbon\carbon::parse('2024-03-1'))
+@if (now() >= Carbon\carbon::parse('2024-05-1'))
     <div id="overlay" class="overlay">
         <p class="font-weight-bold">Maaf, tombol dan layar tidak dapat diakses saat ini. <br><a
                 href="https://wa.me/628978301766">Hubungi
