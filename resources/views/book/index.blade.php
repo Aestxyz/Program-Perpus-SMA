@@ -27,8 +27,9 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>image</th>
                             <th>judul</th>
+                            <th>Jenis buku</th>
+                            <th>stok buku</th>
                             <th>kategori buku</th>
                             <th>Action</th>
                         </tr>
@@ -37,11 +38,9 @@
                         @foreach ($books as $no => $book)
                             <tr>
                                 <td>{{ ++$no }}.</td>
-                                <td>
-                                    <img src="{{ Storage::url($book->image) }}" class="object-fit-cover rounded-circle"
-                                        width="50" height="50" alt="img-cover">
-                                </td>
                                 <td>{{ $book->title }}</td>
+                                <td>{{ $book->type }}</td>
+                                <td>{{ $book->book_count }}</td>
                                 <td><span class="badge bg-primary">{{ $book->category->name }}</span></td>
                                 <td>
                                     <a class="btn btn-outline-primary btn-sm"

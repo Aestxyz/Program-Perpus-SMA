@@ -93,6 +93,23 @@
                         </div>
                         <div class="col-md">
                             <div class="mb-3">
+                                <label for="type" class="form-label">Jenis Buku</label>
+                                <select class="form-select form-control @error('type') is-invalid @enderror"
+                                    name="type" id="type">
+                                    <option selected disabled>Pilih satu</option>
+                                    <option value="Umum">Umum
+                                    </option>
+                                    <option value="Paket">Paket</option>
+                                </select>
+                                @error('type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="mb-3">
                                 <label for="book_count" class="form-label">Jumlah Buku</label>
                                 <input type="number" class="form-control" name="book_count" id="book_count"
                                     value="{{ old('book_count') }}" aria-describedby="helpId"

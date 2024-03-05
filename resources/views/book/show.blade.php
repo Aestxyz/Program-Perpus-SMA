@@ -20,6 +20,8 @@
                         <h2 class="fw-bold text-wrap mb-0">{{ $book->title }}</h2>
                         <p>{{ $book->category->name }}</p>
                         <p>{{ $book->synopsis }}</p>
+                        <p class="text-wrap"><i class="mdi mdi-book-alphabet mdi-24px me-2"></i>Jenis Buku:
+                            {{ $book->type }}</p>
                         <p class="text-wrap"><i class="mdi mdi-identifier mdi-24px me-2"></i>ISBN:
                             {{ $book->isbn }}</p>
                         <p class="text-wrap"><i class="mdi mdi-counter mdi-24px me-2"></i>Jumlah Buku:
