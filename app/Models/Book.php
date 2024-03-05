@@ -21,7 +21,8 @@ class Book extends Model
         'book_count',
         'bookshelf',
         'source',
-        'price'
+        'price',
+        'type'
     ];
     public function category()
     {

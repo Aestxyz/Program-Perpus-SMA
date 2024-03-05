@@ -37,6 +37,9 @@
                             <li>
                                 <span class="fw-bold">Jenis Kelamin: </span> {{ $user->gender }}
                             </li>
+                            <li>
+                                <span class="fw-bold">Status: </span> {{ $user->status }}
+                            </li>
                         </ul>
                     </div>
                 </div>

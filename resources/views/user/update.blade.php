@@ -131,13 +131,36 @@
                                     <option {{ $user->role == 'Petugas' ? 'selected' : '' }} value="Petugas">Petugas
                                     </option>
                                 </select>
-                                <label for="role">Status</label>
+                                <label for="role">Role</label>
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-floating form-floating-outline mb-3">
+                            <select class="form-select form-control @error('status') is-invalid @enderror"
+                                name="status" id="status">
+                                <option selected disabled>Pilih satu</option>
+                                <option value="Siswa" {{ $user->status === 'Siswa' ? 'selected' : '' }}>Siswa
+                                </option>
+                                <option value="Guru" {{ $user->status === 'Guru' ? 'selected' : '' }}>Guru</option>
+                                @if (auth()->user()->role !== 'Petugas')
+                                    <option value="Staf" {{ $user->status === 'Staf' ? 'selected' : '' }}>Staf
+                                    </option>
+                                    <option value="Kepala" {{ $user->status === 'Kepala' ? 'selected' : '' }}>Kepala
+                                    </option>
+                                @endif
+                            </select>
+                            <label for="status">Status</label>
+                            @error('status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                 </div>

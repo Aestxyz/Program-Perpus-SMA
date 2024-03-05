@@ -117,13 +117,36 @@
                                     @endif
                                     <option value="Anggota">Anggota</option>
                                 </select>
-                                <label for="role">Status</label>
+                                <label for="role">Role</label>
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-floating form-floating-outline mb-3">
+                            <select class="form-select form-control @error('status') is-invalid @enderror"
+                                name="status" id="status">
+                                <option selected disabled>Pilih satu</option>
+                                <option value="Siswa">Siswa
+                                </option>
+                                <option value="Guru">Guru</option>
+                                @if (auth()->user()->role !== 'Petugas')
+                                <option value="Staf">Staf
+                                </option>
+                                <option value="Kepala">Kepala
+                                </option>
+                            @endif
+                            </select>
+                            <label for="status">Status</label>
+                            @error('status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                 </div>

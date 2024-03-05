@@ -62,6 +62,7 @@
                             <th>nama lengkap</th>
                             <th>NIS/etc.</th>
                             <th>role</th>
+                            <th>status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -72,6 +73,7 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->identify }}</td>
                                 <td>{{ $user->role }}</td>
+                                <td>{{ $user->status }}</td>
                                 <td>
                                     <div class="d-flex gap-3 justify-content-center">
                                         @include('confirmation.show')

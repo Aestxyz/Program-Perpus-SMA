@@ -44,7 +44,7 @@ class APISeeder extends Seeder
                             'book_count' => rand(1, 100),
                             'source' => 'Data BOSS',
                             'bookshelf' => 'Rak 1',
-                            'type' => Arr::random(['umum', 'paket']),
+                            'type' => Arr::random(['Umum', 'Paket']),
                             'price' => rand(25, 90) . 0000
                         ];
 

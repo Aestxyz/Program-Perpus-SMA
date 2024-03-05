@@ -25,7 +25,7 @@ class StatusSeeder extends Seeder
             ],
             [
                 'name' => 'Terlambat', // 3
-                'amount' => '1000'
+                'amount' => '500'
             ],
             [
                 'name' => 'Dikembalikan', // 4

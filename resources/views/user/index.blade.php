@@ -39,6 +39,7 @@
                             <th>No.</th>
                             <th>Nama Lengkap</th>
                             <th>role</th>
+                            <th>status</th>
                             <th>telp</th>
                             <th>Action</th>
                         </tr>
@@ -51,6 +52,7 @@
                                 <td>
                                     <span class="badge bg-primary">{{ $user->role }}</span>
                                 </td>
+                                <td>{{ $user->status }}</td>
                                 <td>{{ $user->telp }}</td>
                                 <td>
                                     <div class="d-flex gap-3 align-items-center justify-content-center">

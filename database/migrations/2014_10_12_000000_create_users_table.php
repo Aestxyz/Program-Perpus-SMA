@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->enum('role', ['Petugas', 'Anggota', 'Kepala']);
             $table->date('birthdate');
             $table->enum('gender', ['Laki-laki', 'Perempuan']);
-            $table->enum('status', ['guru', 'siswa', 'staf', 'kepala']);
+            $table->enum('status', ['Guru', 'Siswa', 'Staf', 'Kepala']);
             $table->timestamps();
         });
     }

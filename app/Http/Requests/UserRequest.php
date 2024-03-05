@@ -31,6 +31,7 @@ class UserRequest extends FormRequest
             'telp' => 'required|numeric|digits_between:11,12',
             'role' => 'required|in:Petugas,Anggota,Kepala',
             'birthdate' => 'required|date',
+            'status' => 'required|in:Guru,Siswa,Staf,Kepala',
         ];
     }
 }

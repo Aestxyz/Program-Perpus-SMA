@@ -29,7 +29,7 @@ class BookFactory extends Factory
             'publisher' => $this->faker->company(),
             'synopsis' => $this->faker->paragraph(),
             'book_count' => $this->faker->numberBetween(1, 10),
-            'type' => $this->faker->randomElement(['paket', 'umum'])
+            'type' => $this->faker->randomElement(['Paket', 'Umum'])
         ];
     }
 }

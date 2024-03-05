@@ -172,6 +172,23 @@
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
+                                <div class="form-floating form-floating-outline mb-3">
+                                    <select class="form-select form-control @error('status') is-invalid @enderror"
+                                        name="status" id="status">
+                                        <option selected disabled>Pilih satu</option>
+                                        <option value="Siswa">Siswa</option>
+                                        <option value="Guru">Guru</option>
+                                    </select>
+                                    <label for="status">Status</label>
+                                    @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="terms-conditions"
