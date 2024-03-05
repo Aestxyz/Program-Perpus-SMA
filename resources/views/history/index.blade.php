@@ -36,7 +36,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('penalties.show', $item->id) }}" class="btn btn-primary">
+                                    <a href="{{ route('penalties.show', $item->id) }}" class="btn btn-primary btn-sm">
                                         Lihat
                                     </a>
                                 </td>

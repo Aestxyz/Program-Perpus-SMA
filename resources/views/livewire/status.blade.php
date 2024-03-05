@@ -1,5 +1,5 @@
 <div>
-    <div class="mb-2">
+    <div class="col">
         <select wire:model="selectedStatus" class="form-select form-select-sm" name="status_id" id="status_id" required>
             <option selected disabled>Select one</option>
             @foreach ($statuses as $status)
@@ -9,7 +9,7 @@
             @endforeach
         </select>
     </div>
-    <div>
+    <div class="col">
         <input type="text" class="form-control form-control-sm" placeholder="Pilih Status" name="penalty"
             wire:model="amount" />
     </div>

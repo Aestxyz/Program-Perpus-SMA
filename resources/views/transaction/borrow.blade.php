@@ -16,7 +16,7 @@
                         <tr>
                             <th>#</th>
                             <th>nama lengkap</th>
-                            <th>status Transakso</th>
+                            <th>status Transaksi</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
                             <th>Jumlah Terlambat (Hari)</th>
@@ -29,8 +29,8 @@
                             <tr>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a class="btn btn-primary" href="{{ route('transactions.show', $item->id) }}"
-                                            role="button">Lihat</a>
+                                        <a class="btn btn-primary btn-sm"
+                                            href="{{ route('transactions.show', $item->id) }}" role="button">Lihat</a>
                                     </div>
                                 </td>
                                 <td>{{ $item->user->name }}</td>
@@ -42,7 +42,7 @@
                                     {{ $item->return_date != null ? \Carbon\Carbon::parse($item->return_date)->format('d M Y') : '-' }}
                                 </td>
                                 <td>
-                                    {{ $item->return_date < now() ? Carbon\carbon::parse($item->return_date)->diffInDays(now()) : '0' }}
+                                    {{ $item->return_date <= now() ? Carbon\carbon::parse($item->return_date)->diffInDays(now()) : '0' }}
                                     Hari
                                 </td>
                                 <form action="{{ route('transactions.action', $item->id) }}" method="post">
@@ -50,11 +50,13 @@
                                         <div style="width: 120px">
                                             @csrf
                                             @method('PUT')
-                                            @livewire('status', ['statusId' => $item->id])
+                                            <div class="row d-block">
+                                                @livewire('status', ['statusId' => $item->id])
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary btn-sm">
                                             Submit
                                         </button>
                                     </td>

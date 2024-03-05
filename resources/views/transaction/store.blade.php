@@ -9,7 +9,8 @@
                     <select class="form-select" name="user_id" id="user_id">
                         <option selected>Select one</option>
                         @foreach ($users as $user)
-                            <option value="{{ $user->id }}">- {{ $user->name }}</option>
+                            <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->identify }} -
+                                {{ $user->status }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -23,7 +24,8 @@
                             <option
                                 class="text-truncate
                             {{ $book->book_count == 0 ? 'text-danger' : '' }}"
-                                value="{{ $book->id }}" {{ $book->book_count == 0 ? 'disabled' : '' }}>-
+                                value="{{ $book->id }}" {{ $book->book_count == 0 ? 'disabled' : '' }}>
+                                {{ $book->type }} -
                                 {{ $book->title }} : {{ $book->book_count }}</option>
                         @endforeach
                     </select>

@@ -41,7 +41,7 @@
                     <div class="form-floating form-floating-outline mb-3">
                         <input type="number" class="form-control" name="identify" value="{{ $user->identify }}"
                             id="identify" disabled placeholder="Enter your identify" autofocus />
-                        <label for="identify">NIS/etc.</label>
+                        <label for="identify">NIS/NIP</label>
                     </div>
                 </div>
 

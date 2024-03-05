@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PenaltyRequest;
 use App\Http\Requests\TransactionRequest;
 use App\Models\Book;
-use App\Models\Penalty;
 use App\Models\Status;
 use App\Models\Transaction;
 use App\Models\User;
@@ -21,11 +19,12 @@ class TransactionController extends Controller
             ->orWhere('status_id', 2)->latest()
             ->get();
         $borrow_date = Carbon::now()->format('Y-m-d');
-        $return_date = Carbon::now()->addDays(7)->format('Y-m-d');
+        $return_date = Carbon::now()->addDays(3)->format('Y-m-d');
         $users = User::where('role', 'anggota')
-            ->whereNotNull('email_verified_at')
-            ->select('id', 'name')->get();
-        $books = Book::get();
+
+            ->orderBy('name')
+            ->get();
+        $books = Book::orderBy('type')->get();
         $statuses = Status::get();
 
         return view('transaction.borrow', [
@@ -85,8 +84,7 @@ class TransactionController extends Controller
         $transaction = Transaction::findOrFail($id);
         $statuses = Status::get();
         $users = User::where('role', 'anggota')
-            ->whereNotNull('email_verified_at')
-            ->select('id', 'name')->get();
+            ->get();
         $books = Book::get();
 
         return view(
@@ -181,7 +179,7 @@ class TransactionController extends Controller
         $transaction->update([
             'status' => 'Berjalan',
             'return_date' => Carbon::parse($transaction->return_date)
-                ->addDays(7)
+                ->addDays(3)
                 ->format('Y-m-d'),
         ]);
 

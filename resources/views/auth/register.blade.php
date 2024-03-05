@@ -129,7 +129,7 @@
                                             class="form-control @error('identify') is-invalid @enderror"
                                             name="identify" value="{{ old('identify') }}" id="identify"
                                             placeholder="Enter your identify" autofocus />
-                                        <label for="identify">NIS/etc.</label>
+                                        <label for="identify">NIS/NIP</label>
                                         @error('identify')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

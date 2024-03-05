@@ -28,7 +28,7 @@
                                             <td>{{ $transaction->borrow_date ?? '-' }}</td>
                                             <td>{{ $transaction->return_date ?? '-' }}</td>
                                             <td>{{ $transaction->status->name }}</td>
-                                            <td>Rp. {{ $transaction->penalty_total }}</td>
+                                            <td>Rp. {{ $transaction->penalty_total ?? '0' }}</td>
                                             <td>
                                                 @if ($transaction->penalties->first())
                                                     {{ $transaction->penalties->first()->status }}
@@ -90,7 +90,7 @@
                             </div>
                             <p class=" mb-1">Email : {{ $transaction->user->email }}</p>
                             <p class=" mb-0">Telp : {{ $transaction->user->telp }}</p>
-                            <p class=" mb-0">NIS/Etc. : {{ $transaction->user->identify }}</p>
+                            <p class=" mb-0">NIS/NIP : {{ $transaction->user->identify }}</p>
                             <p class=" mb-0">Tanggal Lahir. : {{ $transaction->user->birthdate }}</p>
                             <p class=" mb-0">Jenis Kelamin : {{ $transaction->user->gender }}</p>
                         </div>

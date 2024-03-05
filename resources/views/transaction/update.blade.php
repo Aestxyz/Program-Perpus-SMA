@@ -57,7 +57,7 @@
             @livewire('status')
         </div>
         <div class="text-end">
-            <button type="submit" class="btn btn-primary btn-xl">Simpan</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
     </div>
 </form>

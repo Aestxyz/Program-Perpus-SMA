@@ -19,7 +19,7 @@ class StatusController extends Controller
                 'status_id' => $request->status_id,
                 'penalty_total' => $request->penalty ?? 0,
                 'borrow_date' => Carbon::now()->format('Y-m-d'),
-                'return_date' => Carbon::now()->addDays(7)->format('Y-m-d'),
+                'return_date' => Carbon::now()->addDays(3)->format('Y-m-d'),
             ]);
 
             return back();

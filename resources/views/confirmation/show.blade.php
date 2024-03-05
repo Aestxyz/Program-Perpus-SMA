@@ -15,7 +15,7 @@
                                 <span class="fw-bold">Nama lengkap: </span> {{ $user->name }}
                             </li>
                             <li>
-                                <span class="fw-bold">NIS/Etc.: </span> {{ $user->identify }}
+                                <span class="fw-bold">NIS/NIP: </span> {{ $user->identify }}
                             </li>
                             <li>
                                 <span class="fw-bold">Role: </span> {{ $user->role }}

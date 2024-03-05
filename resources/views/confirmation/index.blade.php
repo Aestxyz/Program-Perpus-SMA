@@ -60,7 +60,7 @@
                         <tr>
                             <th>No.</th>
                             <th>nama lengkap</th>
-                            <th>NIS/etc.</th>
+                            <th>NIS/NIP</th>
                             <th>role</th>
                             <th>status</th>
                             <th>Action</th>

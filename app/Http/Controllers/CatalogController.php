@@ -27,7 +27,7 @@ class CatalogController extends Controller
         return view('catalog.show', [
             'book' => Book::FindOrFail($id),
             'borrow_date' => Carbon::now()->format('Y-m-d'),
-            'return_date' => Carbon::now()->addDays(7)->format('Y-m-d'),
+            'return_date' => Carbon::now()->addDays(3)->format('Y-m-d'),
             'books' => $books
         ]);
     }

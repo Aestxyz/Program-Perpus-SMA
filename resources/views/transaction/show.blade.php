@@ -48,7 +48,7 @@
                                 <td>
                                     @if ($transaction->penalties->first())
                                         {{ $transaction->penalties->first()->status }}
-                                    @elseif (!$transaction->penalties->first() && $transaction->penalty_total > 0)
+                                    @elseif (!$transaction->penalties->first() && $transaction->penalty_total >= 0)
                                         Belum Dibayar
                                     @elseif ($transaction->penalty_total == 0)
                                         -
@@ -56,7 +56,7 @@
                                 </td>
                                 @if ($transaction->status_id == '3')
                                     <td>
-                                        {{ $transaction->return_date < now() ? Carbon\carbon::parse($transaction->return_date)->diffInDays(now()) : '0' }}
+                                        {{ $transaction->return_date <= now() ? Carbon\carbon::parse($transaction->return_date)->diffInDays(now()) : '0' }}
                                         Hari
                                     </td>
                                 @endif
@@ -95,7 +95,7 @@
                                 <span>{{ $transaction->user->telp }}</span>
                             </li>
                             <li class="mb-3">
-                                <span class="fw-medium me-2">NIS/Etc.:</span>
+                                <span class="fw-medium me-2">NIS/NIP:</span>
                                 <span>{{ $transaction->user->identify }}</span>
                             </li>
                             <li class="mb-3">

@@ -163,7 +163,7 @@
                                 </button>
                             </div>
                         @elseif ($errors->any())
-                            <div class="alert alert-danger alert-dismissible mb-3" role="alert">
+                            <div class="alert alert-warning alert-dismissible mb-3" role="alert">
                                 <h4 class="alert-heading d-flex align-items-center"><i
                                         class="mdi mdi-close-circle mdi-24px me-2"></i>Errors :(</h4>
 

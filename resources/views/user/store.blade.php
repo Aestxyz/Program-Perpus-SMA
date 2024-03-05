@@ -66,7 +66,7 @@
                                 <input type="number" class="form-control @error('identify') is-invalid @enderror"
                                     name="identify" value="{{ old('identify') }}" id="identify"
                                     placeholder="Enter your identify" autofocus />
-                                <label for="identify">NIS/etc.</label>
+                                <label for="identify">NIS/NIP</label>
                                 @error('identify')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -135,11 +135,11 @@
                                 </option>
                                 <option value="Guru">Guru</option>
                                 @if (auth()->user()->role !== 'Petugas')
-                                <option value="Staf">Staf
-                                </option>
-                                <option value="Kepala">Kepala
-                                </option>
-                            @endif
+                                    <option value="Staf">Staf
+                                    </option>
+                                    <option value="Kepala">Kepala
+                                    </option>
+                                @endif
                             </select>
                             <label for="status">Status</label>
                             @error('status')
